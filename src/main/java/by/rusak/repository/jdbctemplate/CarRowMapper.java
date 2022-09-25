@@ -1,7 +1,6 @@
 package by.rusak.repository.jdbctemplate;
 
-import by.rusak.domain.Car;
-import by.rusak.domain.Client;
+import by.rusak.domain.CarJdbc;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
@@ -20,11 +19,11 @@ import static by.rusak.repository.car.CarTableColumns.IS_DELETED;
 
 
 @Component
-public class CarRowMapper implements RowMapper<Car> {
+public class CarRowMapper implements RowMapper<CarJdbc> {
 
     @Override
-    public Car mapRow(ResultSet rs, int i) throws SQLException {
-        Car car = new Car();
+    public CarJdbc mapRow(ResultSet rs, int i) throws SQLException {
+        CarJdbc car = new CarJdbc();
 
         car.setId(rs.getLong(ID));
         car.setIdType(rs.getInt(ID_TYPE));

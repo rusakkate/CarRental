@@ -1,8 +1,7 @@
 package by.rusak.repository.jdbctemplate;
 
-import by.rusak.domain.Car;
+import by.rusak.domain.CarJdbc;
 import by.rusak.repository.car.CarRepositoryInterface;
-import by.rusak.repository.client.ClientRepositoryInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,17 +25,17 @@ public class JdbcTemplateCarRepository implements CarRepositoryInterface {
     private final CarRowMapper carRowMapper;
 
     @Override
-    public List<Car> findAll() {
+    public List<CarJdbc> findAll() {
         return findAll(DEFAULT_FIND_ALL_LIMIT, DEFAULT_FIND_ALL_OFFSET);
     }
 
     @Override
-    public List<Car> findAll(int limit, int offset) {
+    public List<CarJdbc> findAll(int limit, int offset) {
         return jdbcTemplate.query("select * from carrental.cars limit " + limit + " offset " + offset, carRowMapper);
     }
 
     @Override
-    public Car create(Car object) {
+    public CarJdbc create(CarJdbc object) {
         final String insertQuery =
                 "insert into carrental.cars (idType, plateNumber, productionYear, rating, " +
                         "photo, creation_date, modification_date, is_deleted) " +
@@ -66,12 +64,12 @@ public class JdbcTemplateCarRepository implements CarRepositoryInterface {
     }
 
     @Override
-    public Car findById(Long id) {
+    public CarJdbc findById(Long id) {
         return jdbcTemplate.queryForObject("select * from carrental.cars where id_car = " + id, carRowMapper);
     }
 
     @Override
-    public Car update(Car object) {
+    public CarJdbc update(CarJdbc object) {
         final String insertQuery =
                 "update carrental.cars " +
                         "set " +
@@ -103,7 +101,7 @@ public class JdbcTemplateCarRepository implements CarRepositoryInterface {
     }
 
     @Override
-    public List<Car> findTheHighestRatingCar() {
+    public List<CarJdbc> findTheHighestRatingCar() {
         return jdbcTemplate.query("select * from carrental.cars where rating = (select max(rating) from carrental.cars)", carRowMapper);
     }
 
@@ -117,21 +115,21 @@ public class JdbcTemplateCarRepository implements CarRepositoryInterface {
     }
 
     @Override
-    public List<Car> findCarRatingBelowAvg() {
+    public List<CarJdbc> findCarRatingBelowAvg() {
         return jdbcTemplate.query("select * from carrental.cars where rating < (select avg(rating) " +
                 "from carrental.cars " +
                 "where is_deleted = false); ", carRowMapper);
     }
 
     @Override
-    public List<Car> findTheOldestCar() {
+    public List<CarJdbc> findTheOldestCar() {
         return jdbcTemplate.query("select * from carrental.cars where production_year = (select min(production_year) " +
                 "from carrental.cars " +
                 "where is_deleted = false); ", carRowMapper);
     }
 
     @Override
-    public List<Car> findTheCheapestCar() {
+    public List<CarJdbc> findTheCheapestCar() {
         return jdbcTemplate.query("select * from carrental.cars where price_day = (select min(price_day) " +
                 "from carrental.cars " +
                 "where is_deleted = false); ", carRowMapper);
@@ -147,7 +145,7 @@ public class JdbcTemplateCarRepository implements CarRepositoryInterface {
     }
 
     @Override
-    public List<Car> findCarPriceDayBelowAvg() {
+    public List<CarJdbc> findCarPriceDayBelowAvg() {
         return jdbcTemplate.query("select * from carrental.cars where price_day < (select avg(price_day) " +
                 "from carrental.cars " +
                 "where is_deleted = false); ", carRowMapper);

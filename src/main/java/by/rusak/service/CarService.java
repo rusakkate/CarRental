@@ -1,36 +1,35 @@
 package by.rusak.service;
 
-import by.rusak.domain.Car;
+import by.rusak.domain.CarJdbc;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public interface CarService {
 
-    public List<Car> findAll();
+    public List<CarJdbc> findAll();
 
-    public List<Car> findAll(int limit, int offset);
+    public List<CarJdbc> findAll(int limit, int offset);
 
-    public Car create(Car object);
+    public CarJdbc create(CarJdbc object);
 
-    public Car findById(Long id);
+    public CarJdbc findById(Long id);
 
-    public Car update(Car object);
+    public CarJdbc update(CarJdbc object);
 
     public Long delete(Long id);
 
-    public List<Car> findTheHighestRatingCar();
+    public List<CarJdbc> findTheHighestRatingCar();
 
     public Map<String, Object> getAvgCarRating();
 
-    public List<Car> findCarRatingBelowAvg();
+    public List<CarJdbc> findCarRatingBelowAvg();
 
-    public List<Car> findTheOldestCar();
+    public List<CarJdbc> findTheOldestCar();
 
-    public List<Car> findTheCheapestCar();
+    public List<CarJdbc> findTheCheapestCar();
 
     public Map<String, Object> getAvgPriceDay();
 
-    public List<Car> findCarPriceDayBelowAvg();
+    public List<CarJdbc> findCarPriceDayBelowAvg();
 }
