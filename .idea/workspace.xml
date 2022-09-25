@@ -5,37 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="Beans (client, car)">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/aop/AspectCounterMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/aop/CustomAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/configuration/ApplicationContexStarter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/configuration/ConnectionPoolConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/configuration/DataBaseProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/domain/Car.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/domain/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/CRUDRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/car/CarRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/car/CarTableColumns.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/client/ClientRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/client/ClientTableColumns.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/jdbctemplate/CarRowMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/jdbctemplate/ClientRowMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/jdbctemplate/JdbcTemplateCarRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/repository/jdbctemplate/JdbcTemplateClientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/service/CarService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/service/CarServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/service/ClientService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/service/ClientServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/rusak/util/DatabaseProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V1_1__initial_scripts.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +28,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,6 +60,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/A S U S/IdeaProjects/CarRental&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;d7b83ec1efc880a578bfa5c1b92a9e39&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -108,8 +99,26 @@
       <workItem from="1662285716331" duration="1972000" />
       <workItem from="1662478087469" duration="569000" />
       <workItem from="1662486451113" duration="62000" />
-      <workItem from="1662567502943" duration="433000" />
+      <workItem from="1662567502943" duration="1616000" />
+      <workItem from="1662569226841" duration="1219000" />
+      <workItem from="1662804834867" duration="2254000" />
+      <workItem from="1662814260442" duration="549000" />
+      <workItem from="1662814833305" duration="655000" />
+      <workItem from="1662815543592" duration="147000" />
+      <workItem from="1662815707499" duration="1780000" />
+      <workItem from="1662879036062" duration="1011000" />
+      <workItem from="1663084958476" duration="53000" />
+      <workItem from="1664110140205" duration="1500000" />
+      <workItem from="1664111674526" duration="2852000" />
     </task>
+    <task id="LOCAL-00001" summary="Beans (client, car)">
+      <created>1662568060872</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662568060872</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,7 +129,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
