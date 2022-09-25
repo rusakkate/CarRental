@@ -1,15 +1,5 @@
-import by.rusak.domain.Car;
-import by.rusak.domain.Client;
 import by.rusak.service.CarService;
-import by.rusak.service.CarServiceImpl;
-import by.rusak.service.ClientService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import java.sql.SQLOutput;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,15 +1,13 @@
 package by.rusak.service;
 
-import by.rusak.domain.Car;
+import by.rusak.domain.CarJdbc;
 import by.rusak.repository.car.CarRepositoryInterface;
-import by.rusak.repository.client.ClientRepositoryInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Repository
@@ -20,27 +18,27 @@ public class CarServiceImpl implements CarService {
     private final CarRepositoryInterface carRepository;
 
     @Override
-    public List<Car> findAll() {
+    public List<CarJdbc> findAll() {
         return carRepository.findAll();
     }
 
     @Override
-    public List<Car> findAll(int limit, int offset) {
+    public List<CarJdbc> findAll(int limit, int offset) {
         return carRepository.findAll();
     }
 
     @Override
-    public Car create(Car object) {
+    public CarJdbc create(CarJdbc object) {
         return carRepository.create(object);
     }
 
     @Override
-    public Car findById(Long id) {
+    public CarJdbc findById(Long id) {
         return carRepository.findById(id);
     }
 
     @Override
-    public Car update(Car object) {
+    public CarJdbc update(CarJdbc object) {
         return carRepository.update(object);
     }
 
@@ -50,7 +48,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> findTheHighestRatingCar() {
+    public List<CarJdbc> findTheHighestRatingCar() {
         return carRepository.findTheHighestRatingCar();
     }
 
@@ -60,17 +58,17 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> findCarRatingBelowAvg() {
+    public List<CarJdbc> findCarRatingBelowAvg() {
         return carRepository.findCarRatingBelowAvg();
     }
 
     @Override
-    public List<Car> findTheOldestCar() {
+    public List<CarJdbc> findTheOldestCar() {
         return carRepository.findTheOldestCar();
     }
 
     @Override
-    public List<Car> findTheCheapestCar() {
+    public List<CarJdbc> findTheCheapestCar() {
         return carRepository.findTheCheapestCar();
     }
 
@@ -80,7 +78,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> findCarPriceDayBelowAvg() {
+    public List<CarJdbc> findCarPriceDayBelowAvg() {
         return carRepository.findCarPriceDayBelowAvg();
     }
 }

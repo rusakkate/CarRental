@@ -1,36 +1,71 @@
 package by.rusak.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 
-import java.sql.Timestamp;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.security.Timestamp;
+import java.util.Set;
 
-@Setter
-@Getter
-@EqualsAndHashCode
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "cars")
 public class Car {
-    private Long id;
-    private Integer idType;
-    private String plateNumber;
-    private Integer productionYear;
-    private long rating;
-    private String photo;
-    private long priceDay;
-    private Timestamp creationDate;
-    private Timestamp modificationDate;
-    private Boolean isDeleted;
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_car")
+    private Long id;
+
+    @Column(name = "id_type")
+    private Long idType;
+
+    @Column(name = "plate_number")
+    private String plateNumber;
+
+    @Column(name = "production_year")
+    private Integer productionYear;
+
+    @Column(name = "rating")
+    private Double rating;
+
+    @Column(name = "photo")
+    private String photo;
+
+    @Column(name = "price_day")
+    private Double priceDay;
+
+    @Column(name = "creation_date")
+    @JsonIgnore
+    private Timestamp creationDate;
+
+    @Column(name = "modification_date")
+    @JsonIgnore
+    private Timestamp modificationDate;
+
+    @Column(name = "is_deleted")
+    @JsonIgnore
+    private boolean isDeleted;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonManagedReference
+    private Set<Order> orders;
+
+    @ManyToOne
+    @JoinColumn(name = "id_type")
+    @JsonBackReference
+    private CarType carType;
+
 }
