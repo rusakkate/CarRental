@@ -11,11 +11,25 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>by.rusak</groupId>
-    <artifactId>CarRental</artifactId>
+    <groupId>com.noirix</groupId>
+    <artifactId>jd2studentsdemojuly</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <!--    <version>1.0.1</version>-->
+    <!--    <version>1.0.20220714205800000</version>-->
+    <!--    <version>1.0.003d72c2bb2f</version>-->
 
-    <packaging>war</packaging>
+    <!--    1.1.2 or 1.0-SNAPSHOT-->
+    <!--    1 - major version of artifact-->
+    <!--    1 - minor update of artifact-->
+    <!--    2 - minor update of minor update artifact-->
+    <!--    SNAPSHOT - not for production usage-->
+
+    <modules>
+        <module>common</module>
+        <module>api</module>
+    </modules>
+
+    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -152,6 +166,27 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+        </dependency>
+
+        <!--Cache providers-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.ehcache</groupId>-->
+        <!--            <artifactId>ehcache</artifactId>-->
+        <!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
@@ -172,6 +207,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
