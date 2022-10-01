@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,6 +21,7 @@ import java.security.Timestamp;
 import java.util.Set;
 
 @Data
+@ToString
 @Entity
 @Table(name = "users")
 public class User {
@@ -74,13 +77,13 @@ public class User {
     @Column(name = "is_deleted")
     @JsonIgnore
     private boolean isDeleted;
-
+/*
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("users")
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
-    private Set<Order> orders;
+    private Set<Order> orders;*/
 
 }

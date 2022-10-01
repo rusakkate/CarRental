@@ -1,5 +1,6 @@
 package by.rusak.controller;
 
+
 import by.rusak.repository.UserSpringDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -17,12 +18,14 @@ import java.util.Collections;
 public class UserController {
     private final UserSpringDataRepository repository;
 
-
     @GetMapping
     public ResponseEntity<Object> testEndpoint() {
 
-        return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findAll(PageRequest.of(0, 10))), HttpStatus.OK);
+        return new ResponseEntity<>(Collections.singletonMap("result", repository.findAll()),
+                HttpStatus.OK);
+
+        /*return new ResponseEntity<>(Collections.singletonMap("result", repository.findAll(PageRequest.of(0, 1))),
+                HttpStatus.OK);*/
     }
 
 }
