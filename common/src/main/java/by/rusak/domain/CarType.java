@@ -1,4 +1,4 @@
-package by.rusak.domain;
+/*package by.rusak.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -50,4 +50,4 @@ public class CarType {
     @JoinColumn(name = "id_model")
     @JsonBackReference
     private Model model;
-}
+}*/

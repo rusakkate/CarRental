@@ -1,3 +1,4 @@
+/*
 package by.rusak.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -62,3 +63,4 @@ public class Order {
 
 
 }
+*/

@@ -1,4 +1,4 @@
-package by.rusak.domain;
+/*package by.rusak.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
@@ -30,4 +30,4 @@ public class Brand {
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
     private Set<Model> models;
-}
+}*/
