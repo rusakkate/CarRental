@@ -11,8 +11,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.noirix</groupId>
-    <artifactId>jd2studentsdemojuly</artifactId>
+    <groupId>by.rusak</groupId>
+    <artifactId>CarRental</artifactId>
     <version>1.0-SNAPSHOT</version>
     <!--    <version>1.0.1</version>-->
     <!--    <version>1.0.20220714205800000</version>-->
@@ -142,7 +142,7 @@
             <artifactId>jaxb-runtime</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+        <!--https://mvnrepository.com/artifact/org.flywaydb/flyway-core-->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
@@ -195,11 +195,11 @@
 
     <build>
         <plugins>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

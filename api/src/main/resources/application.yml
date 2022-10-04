@@ -3,13 +3,14 @@ spring:
     enabled: true
     baseline-on-migrate: true
     baseline-description: Flyway Scripts
-    #    locations: classpath:/migration
+    locations: classpath:/db/migration
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     url: ${spring.datasource.url}
-    default-schema: carrental
     out-of-order: true
     ignore-migration-patterns: '*:ignored'
+    default-schema: carrental
+    #schemas: carrental
   datasource:
     hikari:
       jdbc-url: "jdbc:postgresql://localhost:5432/CarRental"

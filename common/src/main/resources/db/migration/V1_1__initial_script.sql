@@ -22,7 +22,7 @@ create table if not exists brand
     brand_name char(10) not null
 );
 
-alter table if not exists brand
+alter table brand
     owner to postgres;
 
 create unique index if not exists brand_id_brand_uindex

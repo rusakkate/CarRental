@@ -1,3 +1,4 @@
+/*
 package by.rusak.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -45,3 +46,4 @@ public class Role {
     @JsonIgnoreProperties("roles")
     private Set<User> users;
 }
+*/
