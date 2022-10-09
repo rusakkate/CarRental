@@ -1,86 +1,56 @@
 package by.rusak.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.security.Timestamp;
-import java.util.Set;
+import java.sql.Timestamp;
 
-@Data
-@Entity
-@Table(name = "users")
+@Setter
+@Getter
+@EqualsAndHashCode
+@Builder
+//@ToString(exclude = {"userName"})
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
     private Long id;
 
-    @Column(name = "surname")
+    private String userName;
+
     private String surname;
 
-    @Column(name = "user_name")
-    private String name;
-
-    @Column(name = "birthday")
     private Timestamp birth;
 
-    @Column(name = "driver_license_number")
-    @JsonIgnore
-    private String driverLicenseNumber;
+    private Boolean isDeleted;
 
-    @Column(name = "driver_license_date")
-    @JsonIgnore
-    private Timestamp driverLicenseDate;
-
-    @Column(name = "user_login")
-    private String userLogin;
-
-    @Column(name = "user_password")
-    @JsonIgnore
-    private String userPassword;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "latitude")
-    @JsonIgnore
-    private Long latitude;
-
-    @Column(name = "longitude")
-    @JsonIgnore
-    private Long longitude;
-
-    @Column(name = "creation_date")
-    @JsonIgnore
     private Timestamp creationDate;
 
-    @Column(name = "modification_date")
-    @JsonIgnore
     private Timestamp modificationDate;
 
-    @Column(name = "is_deleted")
-    @JsonIgnore
-    private boolean isDeleted;
+    private String login;
 
-/*    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("users")
-    private Set<Role> roles;
+    private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Order> orders;*/
+    private String driverLicenseNumber;
 
+    private Timestamp driverLicenseDate;
+
+    private String email;
+
+    private Long latitude;
+
+    private Long longitude;
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    }
 }

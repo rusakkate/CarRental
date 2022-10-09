@@ -4,21 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="Setting table relations">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="Setting flyway">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/configuration/EncoderConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/configuration/JwtSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/AuthenticationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/exceptionhandle/DefaultExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/exceptionhandle/ErrorContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/AuthRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/AuthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserCreateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserSearchRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/security/CustomHeaders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/security/UserSecurityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/security/WebSecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/security/jwt/JwtTokenHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Roles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/SearchCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/exception/NoSuchEntityException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/CRUDRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/columns/RoleTableColumns.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/columns/UserTableColumns.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/jdbctemplate/JdbcTemplateRoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/jdbctemplate/JdbcTemplateUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/jdbctemplate/RoleRepositoryInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/jdbctemplate/RoleRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/jdbctemplate/UserRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/user/UserRepositoryInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Brand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/CarType.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/CarType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/SpringBootStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/SpringBootStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/configuration/PersistenceProvidersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/configuration/PersistenceProvidersConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/resources/db.migration/V1_1__initial_scripts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/db/migration/V1_1__initial_script.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/UserSpringDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/UserSpringDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/db/migration/V1_1__initial_script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/db/migration/V1_1__initial_script.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +76,7 @@
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -80,9 +100,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ShowUsagesActions.previewPropertyKey": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/A S U S/IdeaProjects/CarRental/common/src/main/resources/db/migration",
+    "last_opened_file_path": "C:/Users/A S U S/IdeaProjects/Promo3",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
@@ -110,20 +131,17 @@
       <recent name="C:\Users\A S U S\IdeaProjects\CarRental\common\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.SpringBootStarter">
-    <configuration name="V1_1__initial_script.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/common/src/main/resources/db.migration/V1_1__initial_script.sql" />
-      <script-mode>FILE</script-mode>
-      <data-source id="c9cb6572-147e-43bb-941a-0a3fd11e9d96" namespace="database/&quot;CarRental&quot;/schema/&quot;carrental&quot;" />
+  <component name="RunManager" selected="HTTP Request.generated-requests | #168">
+    <configuration name="generated-requests | #165" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="165" requestIdentifier="#165" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #19" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="19" requestIdentifier="#19" runType="Run single request">
+    <configuration name="generated-requests | #166" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="166" requestIdentifier="#166" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #35" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="35" requestIdentifier="#35" runType="Run single request">
+    <configuration name="generated-requests | #167" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="167" requestIdentifier="#167" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #37" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="37" requestIdentifier="#37" runType="Run single request">
+    <configuration name="generated-requests | #168" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="168" requestIdentifier="#168" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="SpringBootStarter" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
@@ -139,17 +157,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="HTTP Request.generated-requests | #165" />
+      <item itemvalue="HTTP Request.generated-requests | #166" />
+      <item itemvalue="HTTP Request.generated-requests | #167" />
+      <item itemvalue="HTTP Request.generated-requests | #168" />
+      <item itemvalue="Spring Boot.SpringBootStarter" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #168" />
         <item itemvalue="Spring Boot.SpringBootStarter" />
-        <item itemvalue="HTTP Request.generated-requests | #37" />
-        <item itemvalue="HTTP Request.generated-requests | #35" />
-        <item itemvalue="Database Script.V1_1__initial_script.sql" />
-        <item itemvalue="HTTP Request.generated-requests | #19" />
+        <item itemvalue="HTTP Request.generated-requests | #167" />
+        <item itemvalue="HTTP Request.generated-requests | #166" />
+        <item itemvalue="HTTP Request.generated-requests | #165" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="" />
@@ -189,7 +217,14 @@
       <workItem from="1664714163979" duration="6455000" />
       <workItem from="1664812198267" duration="4457000" />
       <workItem from="1664822461639" duration="1809000" />
-      <workItem from="1664898541743" duration="5463000" />
+      <workItem from="1664898541743" duration="5983000" />
+      <workItem from="1664986753593" duration="5762000" />
+      <workItem from="1665072709560" duration="3142000" />
+      <workItem from="1665209951696" duration="14489000" />
+      <workItem from="1665246135600" duration="851000" />
+      <workItem from="1665247032362" duration="2917000" />
+      <workItem from="1665299965664" duration="4476000" />
+      <workItem from="1665310239969" duration="3868000" />
     </task>
     <task id="LOCAL-00001" summary="Beans (client, car)">
       <created>1662568060872</created>
@@ -212,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664123048917</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Setting flyway">
+      <created>1664904518525</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664904518525</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +271,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Test_user" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -246,23 +288,19 @@
     <MESSAGE value="Setting Flyway" />
     <MESSAGE value="Create hibernate entity" />
     <MESSAGE value="Setting table relations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting table relations" />
+    <MESSAGE value="Setting flyway" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setting flyway" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserController.java</url>
-          <line>21</line>
-          <properties class="by.rusak.controller.UserController" method="testEndpoint">
+          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java</url>
+          <line>29</line>
+          <properties class="by.rusak.controller.UserController" method="testEndpointByName">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserController.java</url>
-          <line>23</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

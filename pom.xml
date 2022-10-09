@@ -69,19 +69,19 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+            <dependency>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-starter-security</artifactId>
+             </dependency>
 
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
-            <scope>compile</scope>
-        </dependency>
+             <dependency>
+                 <groupId>org.apache.commons</groupId>
+                 <artifactId>commons-lang3</artifactId>
+                 <version>3.12.0</version>
+                 <scope>compile</scope>
+             </dependency>
 
-        <!--        Web app dependencies-->
+             <!--        Web app dependencies-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -137,12 +137,12 @@
         </dependency>
 
         <!-- Runtime, com.sun.xml.bind module -->
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-        </dependency>
+           <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+            </dependency>
 
-        <!--https://mvnrepository.com/artifact/org.flywaydb/flyway-core-->
+            <!--https://mvnrepository.com/artifact/org.flywaydb/flyway-core-->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
@@ -195,11 +195,11 @@
 
     <build>
         <plugins>
-            <!--<plugin>
+           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
