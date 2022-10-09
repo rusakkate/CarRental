@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="Setting flyway">
+    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="Setting security">
       <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/configuration/EncoderConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/configuration/JwtSecurityConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/AuthenticationController.java" afterDir="false" />
@@ -224,7 +224,7 @@
       <workItem from="1665246135600" duration="851000" />
       <workItem from="1665247032362" duration="2917000" />
       <workItem from="1665299965664" duration="4476000" />
-      <workItem from="1665310239969" duration="3868000" />
+      <workItem from="1665310239969" duration="4215000" />
     </task>
     <task id="LOCAL-00001" summary="Beans (client, car)">
       <created>1662568060872</created>
@@ -289,7 +289,8 @@
     <MESSAGE value="Create hibernate entity" />
     <MESSAGE value="Setting table relations" />
     <MESSAGE value="Setting flyway" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting flyway" />
+    <MESSAGE value="Setting security" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setting security" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
