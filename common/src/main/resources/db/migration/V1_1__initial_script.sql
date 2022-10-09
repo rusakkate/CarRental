@@ -244,3 +244,5 @@ create unique index if not exists user_role_id_user_role_uindex
 create index if not exists user_role_user_id_role_id_index
     on user_role (id_user, id_role);
 
+
+

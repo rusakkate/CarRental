@@ -1,4 +1,4 @@
-package by.rusak.domain;
+package by.rusak.controller.exceptionhandle;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,21 +7,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
-
 @Setter
 @Getter
 @EqualsAndHashCode
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role {
+public class ErrorContainer {
 
-    private Long id;
+    private String exceptionId;
 
-    private String roleName;
+    private String errorMessage;
 
-    private Timestamp creationDate;
+    private int errorCode;
 
-    private Timestamp modificationDate;
+    private String e;
 }
+
