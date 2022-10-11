@@ -32,4 +32,10 @@ public class UserController {
                 repository.findHibernateUserByUserName(userName)), HttpStatus.OK);
     }
 
+    @GetMapping ("/credentials")
+    public ResponseEntity<Object> testEndpointByLogin(@RequestParam("user_login") String userLogin){
+        return new ResponseEntity<>(Collections.singletonMap("result",
+                repository.findByCredentialsLogin(userLogin)), HttpStatus.OK);
+    }
+
 }
