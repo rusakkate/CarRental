@@ -6,8 +6,11 @@ import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -49,12 +52,13 @@ public class HibernateUser {
     @JsonIgnore
     private Timestamp modificationDate;
 
-    @Column(name = "user_login")
-    private String userLogin;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "login", column = @Column(name = "user_login")),
+            @AttributeOverride(name = "password", column = @Column(name = "user_password"))
+    })
+    private Credentials credentials;
 
-    @Column(name = "user_password")
-    @JsonIgnore
-    private String userPassword;
 
     @Column(name = "driver_license_number")
     @JsonIgnore
