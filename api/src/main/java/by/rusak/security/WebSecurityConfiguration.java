@@ -52,13 +52,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                /*.antMatchers("/guest/**").permitAll()
+                .antMatchers("/guest/**").permitAll()
                 .antMatchers("/registration/**").permitAll()
                 .antMatchers("/authentication/**").permitAll()
-                .antMatchers("/auth/**").permitAll()*/
+                .antMatchers("/auth/**").permitAll()
                 .antMatchers("/**").permitAll()
-                //.antMatchers("/rest/**").permitAll()
-                /*.antMatchers("/admin/**").hasAnyRole("ADMIN", "MODERATOR")*/
+                .antMatchers("/rest/**").permitAll()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN", "MODERATOR")
                 .anyRequest()
                 .authenticated();
     }

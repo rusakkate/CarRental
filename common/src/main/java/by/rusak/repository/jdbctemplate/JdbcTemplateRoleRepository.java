@@ -24,28 +24,22 @@ public class JdbcTemplateRoleRepository implements RoleRepositoryInterface {
 
     @Override
     public Role findById(Long id) {
-        //return jdbcTemplate.queryForObject("select * from carrental.roles where id = " + id, rowMapper);
-        return null;
+        return jdbcTemplate.queryForObject("select * from carrental.roles where id = " + id, rowMapper);
     }
 
     @Override
     public Optional<Role> findOne(Long id) {
-
-        //return Optional.of(findById(id));
-        return null;
+        return Optional.of(findById(id));
     }
 
     @Override
     public List<Role> findAll() {
-
-        //return findAll(DEFAULT_FIND_ALL_LIMIT, DEFAULT_FIND_ALL_OFFSET);
-        return null;
+        return findAll(DEFAULT_FIND_ALL_LIMIT, DEFAULT_FIND_ALL_OFFSET);
     }
 
     @Override
     public List<Role> findAll(int limit, int offset) {
-        //return jdbcTemplate.query("select * from carrental.roles limit " + limit + " offset " + offset, rowMapper);
-        return null;
+        return jdbcTemplate.query("select * from carrental.roles limit " + limit + " offset " + offset, rowMapper);
     }
 
     @Override
@@ -78,9 +72,8 @@ public class JdbcTemplateRoleRepository implements RoleRepositoryInterface {
 
     @Override
     public Long delete(Long id) {
-        /*jdbcTemplate.update("delete from carrental.roles where id = " + id);
-        return id;*/
-        return null;
+        jdbcTemplate.update("delete from carrental.roles where id = " + id);
+        return id;
     }
 
     @Override

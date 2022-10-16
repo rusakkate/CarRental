@@ -9,6 +9,4 @@ public class UserCreateRequest {
 
     private String surname;
 
-    private Double weight;
-
 }

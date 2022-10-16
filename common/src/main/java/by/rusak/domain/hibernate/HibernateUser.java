@@ -1,7 +1,10 @@
 package by.rusak.domain.hibernate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -9,18 +12,30 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "users")
+@EqualsAndHashCode(exclude = {
+        "roles", "orders"
+})
+@ToString(exclude = {
+        "roles", "orders"
+})
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Cacheable
 public class HibernateUser {
@@ -79,4 +94,14 @@ public class HibernateUser {
     @Column(name = "longitude")
     @JsonIgnore
     private Long longitude;
+
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("users")
+    private Set<HibernateRole> roles;
+
+    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonManagedReference
+    private Set<HibernateOrder> orders;*/
+
+
 }
