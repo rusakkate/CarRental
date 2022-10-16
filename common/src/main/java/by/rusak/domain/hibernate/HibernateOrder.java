@@ -2,9 +2,13 @@ package by.rusak.domain.hibernate;
 
 import by.rusak.domain.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +23,8 @@ import java.security.Timestamp;
 @Entity
 @ToString
 @Table(name = "orders")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class HibernateOrder {
 
     @Id
@@ -39,15 +45,19 @@ public class HibernateOrder {
     private Double orderPrice;
 
     @Column(name = "route_distance")
+    @JsonIgnore
     private Double routeDistance;
 
     @Column(name = "route")
+    @JsonIgnore
     private String route;
 
     @Column(name = "creation_date")
+    @JsonIgnore
     private Timestamp creationDate;
 
     @Column(name = "modification_date")
+    @JsonIgnore
     private Timestamp modificationDate;
 
 /*    @ManyToOne

@@ -24,7 +24,7 @@ public class JdbcTemplateRoleRepository implements RoleRepositoryInterface {
 
     @Override
     public Role findById(Long id) {
-        return jdbcTemplate.queryForObject("select * from carrental.roles where id = " + id, rowMapper);
+        return jdbcTemplate.queryForObject("select * from carrental.roles where id_role = " + id, rowMapper);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class JdbcTemplateRoleRepository implements RoleRepositoryInterface {
 
     @Override
     public Long delete(Long id) {
-        jdbcTemplate.update("delete from carrental.roles where id = " + id);
+        jdbcTemplate.update("delete from carrental.roles where id_role = " + id);
         return id;
     }
 

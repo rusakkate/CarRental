@@ -69,7 +69,7 @@ create unique index if not exists car_types_id_type_uindex
 
 create table if not exists users
 (
-    id_user               bigint        not null
+    id_user               serial
         constraint user_pk
             primary key,
     surname               char(10)                                                                 not null,
