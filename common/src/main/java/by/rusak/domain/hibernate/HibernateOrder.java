@@ -1,8 +1,9 @@
-/*
-package by.rusak.domain;
+package by.rusak.domain.hibernate;
 
+import by.rusak.domain.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,9 @@ import java.security.Timestamp;
 
 @Data
 @Entity
+@ToString
 @Table(name = "orders")
-public class Order {
+public class HibernateOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +28,6 @@ public class Order {
 
     @Column(name = "id_car")
     private Long idCar;
-
-    @Column(name = "id_user")
-    private Long idUser;
 
     @Column(name = "rental_start_date")
     private Timestamp rentalStartDate;
@@ -51,16 +50,16 @@ public class Order {
     @Column(name = "modification_date")
     private Timestamp modificationDate;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "id_user")
     @JsonBackReference
-    private User user;
+    private HibernateUser user;*/
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "id_car")
     @JsonBackReference
-    private Car car;
+    private Car car;*/
 
 
 }
-*/
+

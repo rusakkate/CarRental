@@ -1,8 +1,12 @@
-/*
-package by.rusak.domain;
+package by.rusak.domain.hibernate;
 
+import by.rusak.domain.SystemRoles;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.ToString;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.Cacheable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,17 +19,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Data
 @Entity
+@ToString
 @Table(name = "roles")
-public class Role {
+@Cacheable("roles")
+@javax.persistence.Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class HibernateRole {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id ()
     @Column(name = "id_role")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "role_name")
@@ -44,6 +52,5 @@ public class Role {
             inverseJoinColumns = @JoinColumn(name = "id_user")
     )
     @JsonIgnoreProperties("roles")
-    private Set<User> users;
+    private Set<HibernateUser> users;
 }
-*/

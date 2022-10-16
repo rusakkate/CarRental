@@ -1,4 +1,4 @@
-package by.rusak.controller.exceptionhandle;
+package by.rusak.exceptionhandle;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

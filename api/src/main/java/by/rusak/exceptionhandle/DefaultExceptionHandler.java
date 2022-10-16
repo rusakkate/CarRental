@@ -1,4 +1,4 @@
-package by.rusak.controller.exceptionhandle;
+package by.rusak.exceptionhandle;
 
 import by.rusak.exception.NoSuchEntityException;
 import by.rusak.util.UUIDGenerator;
