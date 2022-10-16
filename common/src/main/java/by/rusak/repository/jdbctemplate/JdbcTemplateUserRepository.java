@@ -28,57 +28,56 @@ public class JdbcTemplateUserRepository implements UserRepositoryInterface {
 
     @Override
     public User findById(Long id) {
-        //return jdbcTemplate.queryForObject("select * from carrental.users where id = " + id, userRowMapper);
-        return null;
+        return jdbcTemplate.queryForObject("select * from carrental.users where id_user = " + id, userRowMapper);
     }
 
     @Override
     public Optional<User> findOne(Long id) {
-
-        //return Optional.of(findById(id));
-        return null;
+        return Optional.of(findById(id));
     }
 
     @Override
     public List<User> findAll() {
-
-        //return findAll(DEFAULT_FIND_ALL_LIMIT, DEFAULT_FIND_ALL_OFFSET);
-        return null;
+        return findAll(DEFAULT_FIND_ALL_LIMIT, DEFAULT_FIND_ALL_OFFSET);
     }
 
     @Override
     public List<User> findAll(int limit, int offset) {
-        //return jdbcTemplate.query("select * from carrental.users limit " + limit + " offset " + offset, userRowMapper);
-        return null;
+        return jdbcTemplate.query("select * from carrental.users limit " + limit + " offset " + offset, userRowMapper);
     }
 
     @Override
     public User create(User object) {
-/*        final String insertQuery =
-                "insert into carrental.users (user_name, surname, birth, is_deleted, creation_date, modification_date, weight, user_login, user_password) " +
-                        " values (:userName, :surname, :birth, :isDeleted, :creationDate, :modificationDate, :weight, :login, :password);";
+        final String insertQuery =
+                "insert into carrental.users (surname, user_name, birthday, driver_license_number, driver_license_date, user_login, \n" +
+                        "user_password, email, latitude, longitude,  creation_date, modification_date, is_deleted) " +
+                        " values (:surname, :userName, :birth, :driverLicenseNumber, :driverLicenseDate, :login, " +
+                        ":password, :email, :latitude, :longitude, :creationDate, :modificationDate, :isDeleted);";
 
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
-        mapSqlParameterSource.addValue("userName", object.getUserName());
         mapSqlParameterSource.addValue("surname", object.getSurname());
+        mapSqlParameterSource.addValue("userName", object.getUserName());
         mapSqlParameterSource.addValue("birth", object.getBirth());
-        mapSqlParameterSource.addValue("isDeleted", object.getIsDeleted());
-        mapSqlParameterSource.addValue("creationDate", object.getCreationDate());
-        mapSqlParameterSource.addValue("modificationDate", object.getModificationDate());
-        mapSqlParameterSource.addValue("weight", object.getWeight());
+        mapSqlParameterSource.addValue("driverLicenseNumber", object.getDriverLicenseNumber());
+        mapSqlParameterSource.addValue("driverLicenseDate", object.getDriverLicenseDate());
         mapSqlParameterSource.addValue("login", object.getLogin());
         mapSqlParameterSource.addValue("password", object.getPassword());
+        mapSqlParameterSource.addValue("email", object.getEmail());
+        mapSqlParameterSource.addValue("latitude", object.getLatitude());
+        mapSqlParameterSource.addValue("longitude", object.getLongitude());
+        mapSqlParameterSource.addValue("creationDate", object.getCreationDate());
+        mapSqlParameterSource.addValue("modificationDate", object.getModificationDate());
+        mapSqlParameterSource.addValue("isDeleted", object.getIsDeleted());
 
         namedParameterJdbcTemplate.update(insertQuery, mapSqlParameterSource);
 
-        Long lastInsertId = namedParameterJdbcTemplate.query("SELECT currval('carrental.users_id_seq') as last_id",
+        Long lastInsertId = namedParameterJdbcTemplate.query("SELECT currval('carrental.users_id_user_seq') as last_id",
                 resultSet -> {
                     resultSet.next();
                     return resultSet.getLong("last_id");
                 });
 
-        return findById(lastInsertId);*/
-        return null;
+        return findById(lastInsertId);
     }
 
     @Override
@@ -88,9 +87,8 @@ public class JdbcTemplateUserRepository implements UserRepositoryInterface {
 
     @Override
     public Long delete(Long id) {
-       /* jdbcTemplate.update("delete from carrental.users where id = " + id);
-        return id;*/
-        return null;
+        jdbcTemplate.update("delete from carrental.users where id_user = " + id);
+        return id;
     }
 
     @Override

@@ -99,7 +99,7 @@ public class HibernateUser {
     @JsonIgnoreProperties("users")
     private Set<HibernateRole> roles;
 
-    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+/*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
     private Set<HibernateOrder> orders;*/
 

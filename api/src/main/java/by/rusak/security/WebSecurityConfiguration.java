@@ -1,5 +1,6 @@
 package by.rusak.security;
 
+import by.rusak.security.jwt.JwtTokenHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userProvider;
 
-    //private final JwtTokenHelper tokenUtils;
+
+    private final JwtTokenHelper tokenUtils;
 
     private final NoOpPasswordEncoder noOpPasswordEncoder;
 
@@ -51,12 +53,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                /*For swagger access only*/
+                .antMatchers("/v3/api-docs/**", "/configuration/ui/**", "/swagger-resources/**", "/configuration/security/**", "/swagger-ui/**", "/webjars/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/swagger-ui/index").permitAll()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/guest/**").permitAll()
                 .antMatchers("/registration/**").permitAll()
                 .antMatchers("/authentication/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/**").permitAll()
                 .antMatchers("/rest/**").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN", "MODERATOR")
                 .anyRequest()
