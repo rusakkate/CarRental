@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,11 +58,13 @@ public class HibernateUserInterfaceImpl implements HibernateUserInterface {
         try (Session session = sessionFactory.openSession()) {
             //return session.createNativeQuery(query, HibernateUser.class).getResultList(); - native query run possibility
             return session.createQuery(query, HibernateUser.class).getResultList();
-        }
+        }*/
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.createQuery(query, HibernateUser.class).getResultList();*/
-        return null;
+        TypedQuery<HibernateUser> query = entityManager.createNamedQuery("m_users_multiple_ids_search", HibernateUser.class);
+        query.setParameter("userIds", 5L);
+
+        return query.getResultList();
     }
 
     @Override

@@ -1,12 +1,18 @@
 package by.rusak.controller.springdata;
 
+import by.rusak.controller.requests.RoleRequest;
 import by.rusak.controller.requests.UserCreateRequest;
 import by.rusak.domain.hibernate.HibernateRole;
 import by.rusak.domain.hibernate.HibernateUser;
 import by.rusak.repository.springdata.RolesSpringDataRepository;
 import by.rusak.repository.springdata.UserSpringDataRepository;
+import by.rusak.security.util.PrincipalUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +24,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
+import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -50,13 +59,40 @@ public class UserController {
 
     @GetMapping ("/credentials")
     public ResponseEntity<Object> testEndpointByLogin(@RequestParam("user_login") String userLogin){
-        return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findByCredentialsLogin(userLogin)), HttpStatus.OK);
+        return null;
+        //return new ResponseEntity<>(Collections.singletonMap("result",
+                //repository.findByCredentialsLog(userLogin)), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Finding all users with Page Info response")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
+            @ApiImplicitParam(name = "query", defaultValue = "query", required = false, paramType = "query", dataType = "string")
+
+//            @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
+//                    value = "Results page you want to retrieve (0..N)"),
+//            @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
+//                    value = "Number of records per page."),
+//            @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
+//                    value = "Sorting criteria in the format: property(,asc|desc). " +
+//                            "Default sort order is ascending. " +
+//                            "Multiple sort criteria are supported.")
+    })
+    @GetMapping("/swagger-test")
+    public ResponseEntity<Page<HibernateUser>> findAll(@ApiIgnore Principal principal) {
+        String username = PrincipalUtil.getUsername(principal);
+        HibernateUser userByPrincipal = repository.findByCredentialsLogin(username);
+
+        System.out.println(userByPrincipal);
+        return new ResponseEntity<>(repository.findAll(PageRequest.of(0, 10)), HttpStatus.OK);
+
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Object> createUser(@RequestBody UserCreateRequest createRequest) {
+    public ResponseEntity<Object> createUser(@Valid @RequestBody UserCreateRequest createRequest) {
+
+        RoleRequest roleRequest = new RoleRequest();
 
         HibernateUser user = converter.convert(createRequest, HibernateUser.class);
         HibernateUser createdUser = repository.save(setRoles(user));
