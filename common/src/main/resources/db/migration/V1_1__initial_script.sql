@@ -3,7 +3,7 @@ create table if not exists points
     id_points   bigserial
         constraint points_pk
             primary key,
-    name_points char(10) not null,
+    name_points varchar(10) not null,
     latitude    double precision,
     longitude   double precision
 );
@@ -19,7 +19,7 @@ create table if not exists brand
     id_brand   bigserial
         constraint brand_pk
             primary key,
-    brand_name char(10) not null
+    brand_name varchar(10) not null
 );
 
 alter table brand
@@ -37,7 +37,7 @@ create table if not exists models
         constraint models_brand_id_brand_fk
             references brand
             on update cascade on delete cascade,
-    model_name char(10)
+    model_name varchar(20)
 );
 
 alter table models
@@ -55,7 +55,7 @@ create table if not exists car_types
         constraint car_types_models_id_model_fk
             references models
             on update cascade on delete cascade,
-    gearbox_type  char(10)         not null,
+    gearbox_type  varchar(10)         not null,
     number_seats  integer          not null,
     avr_speed     double precision not null,
     engine_volume double precision not null
@@ -72,18 +72,18 @@ create table if not exists users
     id_user               serial
         constraint user_pk
             primary key,
-    surname               char(10)                                                                 not null,
-    user_name             char(10)                                                                 not null,
+    surname               varchar(50)  default 'surname'::character varying                        not null,
+    user_name             varchar(20)  default 'name'::character varying                           not null,
     birthday              timestamp(6)                                                             not null,
-    driver_license_number char(10)                                                                 not null,
-    driver_license_date   timestamp(6)                                                             not null,
-    user_login            char(50),
-    user_password         char(200),
-    email                 char(50),
+    driver_license_number varchar(20),
+    driver_license_date   timestamp(6),
+    user_login            varchar(100),
+    user_password         varchar(200) default 'default_password'::character varying,
+    email                 varchar(50),
     latitude              double precision,
     longitude             double precision,
     creation_date         timestamp(6) default CURRENT_TIMESTAMP                                   not null,
-    modification_date     timestamp(6)                                                             not null,
+    modification_date     timestamp(6) default CURRENT_TIMESTAMP                                   not null,
     is_deleted            boolean      default false                                               not null
 );
 
@@ -98,14 +98,14 @@ create index if not exists users_user_name_surname_index
 
 create table if not exists cars
 (
-    id_car            bigint       not null
+    id_car            serial
         constraint car_pk
             primary key,
     id_type           bigint                                                             not null
         constraint car_car_types_id_type_fk
             references car_types
             on update cascade on delete cascade,
-    plate_number      char(10)                                                           not null,
+    plate_number      varchar(10)                                                           not null,
     production_year   integer                                                            not null,
     rating            double precision,
     photo             inet,
@@ -118,19 +118,26 @@ create table if not exists cars
 alter table cars
     owner to postgres;
 
+create unique index if not exists cars_id_car_uindex
+    on cars (id_car);
+
+
 create table if not exists orders
 (
     id_order          bigserial
-        constraint orders_pk
-            primary key,
-    id_car            bigint                                 not null
-        constraint orders_cars_id_car_fk
-            references cars
-            on update cascade on delete cascade,
-    id_user           bigint                                 not null
-        constraint orders_users_id_user_fk
-            references users
-            on update cascade on delete cascade,
+    constraint orders_pk
+    primary key,
+
+    id_user     bigint not null
+    constraint orders_users_id_user_fk
+    references users
+    on update cascade on delete cascade,
+
+    id_car      bigint not null
+    constraint orders_cars_id_car_fk
+    references cars
+    on update cascade on delete cascade,
+
     rental_start_date timestamp(6)                           not null,
     rental_end_date   timestamp(6)                           not null,
     order_price       double precision                       not null,
@@ -138,13 +145,17 @@ create table if not exists orders
     route             inet,
     creation_date     timestamp(6) default CURRENT_TIMESTAMP not null,
     modification_date timestamp(6) default CURRENT_TIMESTAMP
-);
+
+    );
 
 alter table orders
     owner to postgres;
 
 create unique index if not exists orders_id_order_uindex
     on orders (id_order);
+
+create index if not exists orders_id_user_id_car_index
+    on orders (id_user, id_car);
 
 create table if not exists basing
 (
@@ -184,7 +195,7 @@ create table if not exists fines
     is_payed              boolean      default false             not null,
     creation_date         timestamp(6) default CURRENT_TIMESTAMP not null,
     modification_date     timestamp(6),
-    finecharacter         char                                   not null,
+    finecharacter         varchar                                not null,
     has_been_sent_clients boolean,
     sentdate              timestamp(6)
 );
@@ -209,7 +220,7 @@ create table if not exists roles
     id_role           serial
         constraint roles_pk
             primary key,
-    role_name         char(10)                                  not null,
+    role_name         varchar(50)                               not null,
     creation_date     timestamp(6) default CURRENT_TIMESTAMP(6) not null,
     modification_date timestamp
 );
@@ -243,6 +254,4 @@ create unique index if not exists user_role_id_user_role_uindex
 
 create index if not exists user_role_user_id_role_id_index
     on user_role (id_user, id_role);
-
-
 

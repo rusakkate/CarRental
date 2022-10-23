@@ -10,6 +10,8 @@ import java.util.List;
 public interface UserSpringDataRepository extends CrudRepository<HibernateUser, Long>, JpaRepository<HibernateUser, Long>, PagingAndSortingRepository<HibernateUser, Long> {
     HibernateUser findHibernateUserByUserName (String name);
 
-    List<HibernateUser> findByCredentialsLogin(String login);
+   //List<HibernateUser> findByCredentialsLogin(String login);
+
+    HibernateUser findByCredentialsLogin(String login);
 
 }

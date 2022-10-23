@@ -1,8 +1,13 @@
-/*package by.rusak.domain;
+package by.rusak.domain.hibernate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.Cacheable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,16 +24,22 @@ import java.util.Set;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = {
+        "cars"
+})
+@ToString(exclude = {
+        "cars"
+})
 @Table(name = "car_types")
-public class CarType {
+@Cacheable("car_types")
+@javax.persistence.Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class HibernateCarTypes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_type")
     private Long id;
-
-    @Column(name = "id_model")
-    private Long idModel;
 
     @Column(name = "gearbox_type")
     private String gearboxType;
@@ -42,12 +53,13 @@ public class CarType {
     @Column(name = "engine_volume")
     private Double engineVolume;
 
-    @OneToMany(mappedBy = "carType", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Car> cars;
-
     @ManyToOne
     @JoinColumn(name = "id_model")
     @JsonBackReference
-    private Model model;
-}*/
+    private HibernateModel model;
+
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonManagedReference
+    private Set<HibernateCar> cars;
+}

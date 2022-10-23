@@ -1,10 +1,15 @@
-/*
-package by.rusak.domain;
+package by.rusak.domain.hibernate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.Cacheable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,24 +19,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "cars")
-public class Car {
-
+@Cacheable("cars")
+@javax.persistence.Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class HibernateCar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_car")
     private Long id;
-
-    @Column(name = "id_type")
-    private Long idType;
 
     @Column(name = "plate_number")
     private String plateNumber;
@@ -60,14 +66,18 @@ public class Car {
     @JsonIgnore
     private boolean isDeleted;
 
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<Order> orders;
-
     @ManyToOne
     @JoinColumn(name = "id_type")
     @JsonBackReference
-    private CarType carType;
+    private HibernateModel type;
+
+    @ManyToMany
+    @JoinTable(name = "orders",
+            joinColumns = @JoinColumn(name = "id_car"),
+            inverseJoinColumns = @JoinColumn(name = "id_user")
+    )
+    @JsonIgnoreProperties("cars")
+    private Set<HibernateUser> users;
+
 
 }
-*/
