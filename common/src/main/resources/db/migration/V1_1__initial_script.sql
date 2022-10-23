@@ -37,7 +37,7 @@ create table if not exists models
         constraint models_brand_id_brand_fk
             references brand
             on update cascade on delete cascade,
-    model_name varchar(10)
+    model_name varchar(20)
 );
 
 alter table models
@@ -98,7 +98,7 @@ create index if not exists users_user_name_surname_index
 
 create table if not exists cars
 (
-    id_car            bigint       not null
+    id_car            serial
         constraint car_pk
             primary key,
     id_type           bigint                                                             not null
@@ -118,19 +118,26 @@ create table if not exists cars
 alter table cars
     owner to postgres;
 
+create unique index if not exists cars_id_car_uindex
+    on cars (id_car);
+
+
 create table if not exists orders
 (
     id_order          bigserial
-        constraint orders_pk
-            primary key,
-    id_car            bigint                                 not null
-        constraint orders_cars_id_car_fk
-            references cars
-            on update cascade on delete cascade,
-    id_user           bigint                                 not null
-        constraint orders_users_id_user_fk
-            references users
-            on update cascade on delete cascade,
+    constraint orders_pk
+    primary key,
+
+    id_user     bigint not null
+    constraint orders_users_id_user_fk
+    references users
+    on update cascade on delete cascade,
+
+    id_car      bigint not null
+    constraint orders_cars_id_car_fk
+    references cars
+    on update cascade on delete cascade,
+
     rental_start_date timestamp(6)                           not null,
     rental_end_date   timestamp(6)                           not null,
     order_price       double precision                       not null,
@@ -138,7 +145,8 @@ create table if not exists orders
     route             inet,
     creation_date     timestamp(6) default CURRENT_TIMESTAMP not null,
     modification_date timestamp(6) default CURRENT_TIMESTAMP
-);
+
+    );
 
 alter table orders
     owner to postgres;
@@ -146,8 +154,8 @@ alter table orders
 create unique index if not exists orders_id_order_uindex
     on orders (id_order);
 
-create index if not exists orders_id_user_index
-    on orders (id_user);
+create index if not exists orders_id_user_id_car_index
+    on orders (id_user, id_car);
 
 create table if not exists basing
 (
@@ -212,7 +220,7 @@ create table if not exists roles
     id_role           serial
         constraint roles_pk
             primary key,
-    role_name         varchar(10)                               not null,
+    role_name         varchar(50)                               not null,
     creation_date     timestamp(6) default CURRENT_TIMESTAMP(6) not null,
     modification_date timestamp
 );
@@ -246,6 +254,4 @@ create unique index if not exists user_role_id_user_role_uindex
 
 create index if not exists user_role_user_id_role_id_index
     on user_role (id_user, id_role);
-
-
 

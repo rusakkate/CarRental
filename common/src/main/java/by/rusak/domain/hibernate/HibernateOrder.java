@@ -19,7 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.security.Timestamp;
+import java.sql.Timestamp;
+
 
 @Data
 @Entity
@@ -32,6 +33,12 @@ public class HibernateOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order")
     private Long id;
+
+    @Column(name = "id_user")
+    private Long idUser;
+
+    @Column(name = "id_car")
+    private Long idCar;
 
     @Column(name = "rental_start_date")
     private Timestamp rentalStartDate;
@@ -57,17 +64,6 @@ public class HibernateOrder {
     @Column(name = "modification_date")
     @JsonIgnore
     private Timestamp modificationDate;
-
-/*    @ManyToOne
-    @JoinColumn(name = "id_user")
-    @JsonBackReference
-    private HibernateUser user;
-
-    @ManyToOne
-    @JoinColumn(name = "id_car")
-    @JsonBackReference
-    private HibernateCar car;*/
-
 
 }
 

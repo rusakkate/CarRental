@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/orders")
+@RequestMapping("/rest/orders")
 public class OrderController {
 
     private final OrderSpringDataRepository repository;
@@ -28,15 +28,14 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<Object> testEndpoint() {
 
-        List<HibernateOrder> listAllOrders = repository.findAll();
+        List<HibernateOrder> listAllOrders = repository.findHQLQuery();
         Map<String, List<HibernateOrder>> result = Collections.singletonMap("result", listAllOrders);
-
         return new ResponseEntity<>(result, HttpStatus.OK);
 
-       /* PageRequest pageRequest = PageRequest.of(0, 1);
-        Page<HibernateOrder> allOrders = repository.findAll(pageRequest);
-        Map<String, Page<HibernateOrder>> result = Collections.singletonMap("result", allOrders);
 
+        /*List<Object[]> listAllOrders = repository.getPartsOfOrder();
+        Map<String, List<Object[]> > result = Collections.singletonMap("result", listAllOrders);
         return new ResponseEntity<>(result, HttpStatus.OK);*/
+
     }
 }

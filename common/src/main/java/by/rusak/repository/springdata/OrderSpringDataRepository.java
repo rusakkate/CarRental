@@ -14,5 +14,14 @@ import java.util.List;
 public interface OrderSpringDataRepository extends CrudRepository<HibernateOrder, Long>,
         JpaRepository<HibernateOrder, Long>, PagingAndSortingRepository<HibernateOrder, Long> {
 
+    //@Query(value = "select * from carrental.orders", nativeQuery = true)
+    //List<HibernateOrder> findHQLQueryNative();
+
+    @Query ("select o from HibernateOrder o")
+    List<HibernateOrder> findHQLQuery();
+    @Query ("select o.id, o.idCar, o.idUser, o.orderPrice, o.routeDistance, o.route " +
+            " from HibernateOrder o")
+    List<Object[]> getPartsOfOrder();
+
 
 }
