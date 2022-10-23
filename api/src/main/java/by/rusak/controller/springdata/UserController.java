@@ -31,6 +31,7 @@ import java.security.Principal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -47,8 +48,16 @@ public class UserController {
     @GetMapping
     public ResponseEntity<Object> testEndpoint() {
 
-        return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findAll(PageRequest.of(0, 1))), HttpStatus.OK);
+        List<HibernateUser> listAllUsers = repository.findAll();
+        Map<String, List<HibernateUser>> result = Collections.singletonMap("result", listAllUsers);
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+
+        /*PageRequest pageRequest = PageRequest.of(0, 2);
+        Page<HibernateUser> allUsers = repository.findAll(pageRequest);
+        Map<String, Page<HibernateUser>> result = Collections.singletonMap("result", allUsers);
+
+        return new ResponseEntity<>(result, HttpStatus.OK);*/
     }
 
     @GetMapping ("/test")
@@ -97,6 +106,7 @@ public class UserController {
         HibernateUser user = converter.convert(createRequest, HibernateUser.class);
         HibernateUser createdUser = repository.save(setRoles(user));
 
+        HibernateRole convertTest = converter.convert(roleRequest, HibernateRole.class);
         //repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
 
         Map<String, Object> model = new HashMap<>();

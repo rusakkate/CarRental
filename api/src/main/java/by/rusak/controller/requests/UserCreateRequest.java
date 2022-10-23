@@ -14,12 +14,12 @@ public class UserCreateRequest {
 
     @ApiModelProperty(required = true, allowableValues = "kate", dataType = "string", notes = "user's login")
     @NotNull
-    @Size(min = 2, max = 10)
+    @Size(min = 2, max = 20)
     private String userName;
 
     @ApiModelProperty(required = true, allowableValues = "rusak", dataType = "string", notes = "user's surname")
     @NotNull
-    @Size(min = 2, max = 10)
+    @Size(min = 2, max = 50)
     private String surname;
 
     @ApiModelProperty(required = true, allowableValues = "1665685166000", dataType = "timestamp", notes = "user's birth")

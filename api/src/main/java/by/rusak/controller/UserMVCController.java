@@ -30,7 +30,7 @@ public class UserMVCController {
         List<User> users = userService.findAll();
 
         ModelAndView model = new ModelAndView();
-        model.addObject("user", "Slava");
+        model.addObject("user", "kotik");
         model.addObject("users", users);
 
         model.setViewName("users");
@@ -47,7 +47,7 @@ public class UserMVCController {
         List<User> users = userService.search(verifiedLimit, verifiedOffset);
 
         ModelAndView model = new ModelAndView();
-        model.addObject("user", "Slava");
+        model.addObject("user", "kotik");
         model.addObject("users", users);
 
         model.setViewName("users");
@@ -88,7 +88,7 @@ public class UserMVCController {
         List<User> users = userService.findAll();
 
         ModelAndView model = new ModelAndView();
-        model.addObject("user", "Slava");
+        model.addObject("user", "kotik");
         model.addObject("users", users);
 
         model.setViewName("users");

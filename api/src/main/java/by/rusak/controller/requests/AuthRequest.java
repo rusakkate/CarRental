@@ -11,6 +11,6 @@ public class AuthRequest {
     @ApiModelProperty(required = true, allowableValues = "rusakkate", dataType = "string", notes = "user's login")
     private String login;
 
-    @ApiModelProperty(required = true, allowableValues = "ggg", dataType = "string", notes = "user's password")
+    @ApiModelProperty(required = true, allowableValues = "12345", dataType = "string", notes = "user's password")
     private String password;
 }

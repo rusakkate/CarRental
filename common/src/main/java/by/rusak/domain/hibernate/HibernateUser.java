@@ -5,9 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.AttributeOverride;
@@ -28,15 +34,16 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
+//@Data
 @Data
 @Entity
-@Table(name = "users")
 @EqualsAndHashCode(exclude = {
         "roles", "orders"
 })
 @ToString(exclude = {
         "roles", "orders"
 })
+@Table(name = "users")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @NamedQuery(name = "m_users_multiple_ids_search", query = "select u from HibernateUser u where u.id = :userIds")
 @Cacheable
@@ -101,7 +108,8 @@ public class HibernateUser {
     @JsonIgnoreProperties("users")
     private Set<HibernateRole> roles;
 
-/*    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+/*    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
     private Set<HibernateOrder> orders;*/
 
