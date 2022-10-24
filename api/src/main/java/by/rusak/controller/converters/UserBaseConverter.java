@@ -16,6 +16,7 @@ public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
         userForUpdate.setBirth(request.getBirth());
         userForUpdate.setDriverLicenseNumber(request.getDriverLicenseNumber());
         userForUpdate.setDriverLicenseDate(request.getDriverLicenseDate());
+        userForUpdate.setEmail(request.getEmail());
 
         /*System fields filling*/
         userForUpdate.setModificationDate(new Timestamp(new Date().getTime()));

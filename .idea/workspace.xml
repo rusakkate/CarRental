@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="table orders">
+    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="create user">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/ValidationErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/Violation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/SpringBootStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/SpringBootStarter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/configuration/CacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/configuration/CacheConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateBrand.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateBrand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateCarTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateCarTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/UserBaseConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/UserBaseConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/DefaultExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/BrandSpringDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/BrandSpringDataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/CarTypesSpringDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/CarTypesSpringDataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/ModelsSpringDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/ModelsSpringDataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/RolesSpringDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/RolesSpringDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/hibernate/HibernateUserInterfaceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/hibernate/HibernateUserInterfaceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,17 +117,17 @@
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager" selected="HTTP Request.generated-requests | #240">
-    <configuration name="generated-requests | #240" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="240" requestIdentifier="#240" runType="Run single request">
+  <component name="RunManager" selected="Spring Boot.SpringBootStarter">
+    <configuration name="generated-requests | #242" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="242" requestIdentifier="#242" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #241" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="241" requestIdentifier="#241" runType="Run single request">
+    <configuration name="generated-requests | #244" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="244" requestIdentifier="#244" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #246" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="246" requestIdentifier="#246" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #247" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="247" requestIdentifier="#247" runType="Run single request">
+    <configuration name="generated-requests | #248" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="248" requestIdentifier="#248" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="SpringBootStarter" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
@@ -144,19 +144,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.generated-requests | #240" />
-      <item itemvalue="HTTP Request.generated-requests | #241" />
+      <item itemvalue="HTTP Request.generated-requests | #242" />
+      <item itemvalue="HTTP Request.generated-requests | #244" />
+      <item itemvalue="HTTP Request.generated-requests | #248" />
       <item itemvalue="HTTP Request.generated-requests | #246" />
-      <item itemvalue="HTTP Request.generated-requests | #247" />
       <item itemvalue="Spring Boot.SpringBootStarter" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.generated-requests | #240" />
-        <item itemvalue="HTTP Request.generated-requests | #241" />
-        <item itemvalue="HTTP Request.generated-requests | #246" />
-        <item itemvalue="HTTP Request.generated-requests | #247" />
         <item itemvalue="Spring Boot.SpringBootStarter" />
+        <item itemvalue="HTTP Request.generated-requests | #248" />
+        <item itemvalue="HTTP Request.generated-requests | #244" />
+        <item itemvalue="HTTP Request.generated-requests | #242" />
+        <item itemvalue="HTTP Request.generated-requests | #246" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +226,8 @@
       <workItem from="1666464577741" duration="3419000" />
       <workItem from="1666505011893" duration="17827000" />
       <workItem from="1666533732082" duration="3009000" />
-      <workItem from="1666584926869" duration="1928000" />
+      <workItem from="1666584926869" duration="3873000" />
+      <workItem from="1666615918282" duration="10582000" />
     </task>
     <task id="LOCAL-00001" summary="Beans (client, car)">
       <created>1662568060872</created>
@@ -270,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666515257880</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="cache">
+      <created>1666597336321</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1666597336321</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,26 +316,14 @@
     <MESSAGE value="table relations mapping" />
     <MESSAGE value="swagger2" />
     <MESSAGE value="table mapping" />
-    <option name="LAST_COMMIT_MESSAGE" value="table mapping" />
+    <MESSAGE value="table orders" />
+    <MESSAGE value="cache" />
+    <MESSAGE value="create user" />
+    <option name="LAST_COMMIT_MESSAGE" value="create user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/OrderController.java</url>
           <line>31</line>
@@ -341,7 +337,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/OrderController.java</url>
           <line>28</line>
-          <properties class="by.rusak.controller.springdata.OrderController">
+          <properties class="by.rusak.controller.springdata.OrderController" method="testEndpoint">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

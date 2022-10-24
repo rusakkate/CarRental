@@ -112,6 +112,7 @@ public class HibernateUser {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("users")
+    @JsonIgnore
     private Set<HibernateCar> cars;
 
 }
