@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.cache.annotation.Cacheable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,8 +31,7 @@ import java.util.Set;
         "carTypes"
 })
 @Table(name = "models")
-@Cacheable("models")
-@javax.persistence.Cacheable
+@Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class HibernateModel {
 
@@ -44,6 +43,7 @@ public class HibernateModel {
     @Column(name = "model_name")
     private String brandName;
 
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "id_brand")
     @JsonBackReference

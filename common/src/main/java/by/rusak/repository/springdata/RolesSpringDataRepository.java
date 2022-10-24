@@ -13,8 +13,4 @@ import java.util.List;
 @Repository
 public interface RolesSpringDataRepository extends JpaRepository<HibernateRole, Long> {
 
-    @Cacheable("roles")
-    @Query(value = "select r from HibernateRole r",
-            nativeQuery = true)
-    List<HibernateRole> findAll();
 }

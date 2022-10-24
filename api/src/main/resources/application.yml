@@ -19,12 +19,12 @@ spring:
     username: postgres
     password: postgres
     url: "jdbc:postgresql://localhost:5432/CarRental"
-  #
-  #  cache:
-  #    type: Caffeine
-  #    cache-names: roles
-  #    caffeine:
-  #      spec: initialCapacity=10,maximumSize=20, expireAfterAccess=10s
+
+#    cache:
+#      type: Caffeine
+#      cache-names: roles, brand, models, car_types
+#      caffeine:
+#        spec: initialCapacity=10,maximumSize=20, expireAfterAccess=10s
 
   jpa:
     properties:

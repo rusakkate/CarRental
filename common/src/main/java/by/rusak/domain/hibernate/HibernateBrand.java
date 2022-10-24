@@ -8,8 +8,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.cache.annotation.Cacheable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,8 +32,7 @@ import java.util.Set;
         "models"
 })
 @Table(name = "brand")
-@Cacheable("brand")
-@javax.persistence.Cacheable
+@Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class HibernateBrand {
 

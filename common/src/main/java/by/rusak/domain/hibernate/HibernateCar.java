@@ -9,8 +9,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.cache.annotation.Cacheable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,8 +30,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "cars")
-@Cacheable("cars")
-@javax.persistence.Cacheable
+@Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class HibernateCar {
     @Id
@@ -66,11 +65,13 @@ public class HibernateCar {
     @JsonIgnore
     private boolean isDeleted;
 
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "id_type")
     @JsonBackReference
     private HibernateModel type;
 
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany
     @JoinTable(name = "orders",
             joinColumns = @JoinColumn(name = "id_car"),
