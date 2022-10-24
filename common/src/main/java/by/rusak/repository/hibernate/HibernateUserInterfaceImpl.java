@@ -62,7 +62,7 @@ public class HibernateUserInterfaceImpl implements HibernateUserInterface {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<HibernateUser> query = entityManager.createNamedQuery("m_users_multiple_ids_search", HibernateUser.class);
-        query.setParameter("userIds", 5L);
+        query.setParameter("userIds", 3L);
 
         return query.getResultList();
     }

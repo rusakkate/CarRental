@@ -60,17 +60,17 @@ public class UserController {
         return new ResponseEntity<>(result, HttpStatus.OK);*/
     }
 
-    @GetMapping ("/test")
-    public ResponseEntity<Object> testEndpointByName(@RequestParam("user_name") String userName){
+    @GetMapping("/test")
+    public ResponseEntity<Object> testEndpointByName(@RequestParam("user_name") String userName) {
         return new ResponseEntity<>(Collections.singletonMap("result",
                 repository.findHibernateUserByUserName(userName)), HttpStatus.OK);
     }
 
-    @GetMapping ("/credentials")
-    public ResponseEntity<Object> testEndpointByLogin(@RequestParam("user_login") String userLogin){
+    @GetMapping("/credentials")
+    public ResponseEntity<Object> testEndpointByLogin(@RequestParam("user_login") String userLogin) {
         return null;
         //return new ResponseEntity<>(Collections.singletonMap("result",
-                //repository.findByCredentialsLog(userLogin)), HttpStatus.OK);
+        //repository.findByCredentialsLog(userLogin)), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Finding all users with Page Info response")
@@ -106,7 +106,7 @@ public class UserController {
         HibernateUser user = converter.convert(createRequest, HibernateUser.class);
         HibernateUser createdUser = repository.save(setRoles(user));
 
-        HibernateRole convertTest = converter.convert(roleRequest, HibernateRole.class);
+        //HibernateRole convertTest = converter.convert(roleRequest, HibernateRole.class);
         //repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
 
         Map<String, Object> model = new HashMap<>();
@@ -123,7 +123,6 @@ public class UserController {
         if (!CollectionUtils.isEmpty(roles)) {
             updatedRoles.addAll(roles);
         }
-        updatedRoles.add(rolesSpringDataRepository.findById(1L).get());
         updatedRoles.add(rolesSpringDataRepository.findById(2L).get());
 
         user.setRoles(updatedRoles);

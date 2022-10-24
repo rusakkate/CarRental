@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class CacheConfig {
-/*    @Bean
+    @Bean
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("roles");
         cacheManager.setCaffeine(cacheProperties());
@@ -19,10 +19,10 @@ public class CacheConfig {
 
     public Caffeine<Object, Object> cacheProperties() {
         return Caffeine.newBuilder()
-                .initialCapacity(2)
-                .maximumSize(200)
-                .expireAfterAccess(50, TimeUnit.SECONDS)
+                .initialCapacity(10)
+                .maximumSize(20)
+                .expireAfterAccess(10, TimeUnit.SECONDS)
                 .weakKeys()
                 .recordStats();
-    }*/
+    }
 }
