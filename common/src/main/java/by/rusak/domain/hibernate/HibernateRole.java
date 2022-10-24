@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.cache.annotation.Cacheable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,8 +26,7 @@ import java.util.Set;
 @Entity
 @ToString
 @Table(name = "roles")
-@Cacheable("roles")
-@javax.persistence.Cacheable
+@Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class HibernateRole {
 
@@ -46,6 +45,7 @@ public class HibernateRole {
     @Column(name = "modification_date")
     private Timestamp modificationDate;
 
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "id_role"),
