@@ -1,28 +1,34 @@
 package by.rusak.service;
 
 import by.rusak.domain.User;
+import by.rusak.domain.hibernate.HibernateUser;
+import by.rusak.repository.springdata.UserSpringDataRepository;
 import by.rusak.repository.user.UserRepositoryInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-//    @Autowired
-//    @Qualifier("userRepository")
-
-    //    @Inject
-//    @Named("userRepository")
-//JSR-330
     private final UserRepositoryInterface userRepository;
 
-//    public UserServiceImpl(@Qualifier("userRepository") UserRepositoryInterface userRepository) {
-//        this.userRepository = userRepository;
-//    }
+    private final UserSpringDataRepository repository;
+
+    @Override
+    public HibernateUser save(HibernateUser hibernateUser) {
+        return repository.save(hibernateUser);
+    }
+
+    @Override
+    public Optional<HibernateUser> findById(Long userId) {
+        return repository.findById(userId);
+    }
+
 
     @Override
     public List<User> findAll() {
@@ -40,20 +46,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.create(object);
     }
 
-    @Override
-    public User findById(Long userId) {
-        return userRepository.findById(userId);
-    }
 
     @Override
     public List<User> search(int limit, int offset) {
         return userRepository.findAll(limit, offset);
     }
 
-    //    @Autowired
-//    //@Inject
-//    public void setUserRepository(@Qualifier("userRepository") UserRepositoryInterface userRepository) {
-//        this.userRepository = userRepository;
-//    }
+
+
 }
 

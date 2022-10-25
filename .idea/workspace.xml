@@ -4,16 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="validation create user">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/UserRegistrationConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserRegistrationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Mail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/MailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/MailServiceImpl.java" afterDir="false" />
+    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="registration">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserRoleRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateUserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/UserRoleSpringDataRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/RoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserRoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserRoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserMVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserMVCController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/Mail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/domain/hibernate/HibernateUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/RolesSpringDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/RolesSpringDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/UserSpringDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/springdata/UserSpringDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/MailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/MailServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/resources/db/migration/V1_1__initial_script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/resources/db/migration/V1_1__initial_script.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,21 +340,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/UserController.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/OrderController.java</url>
           <line>31</line>

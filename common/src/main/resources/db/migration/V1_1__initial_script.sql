@@ -84,7 +84,8 @@ create table if not exists users
     longitude             double precision,
     creation_date         timestamp(6) default CURRENT_TIMESTAMP                                   not null,
     modification_date     timestamp(6) default CURRENT_TIMESTAMP                                   not null,
-    is_deleted            boolean      default false                                               not null
+    is_deleted            boolean      default false                                               not null,
+    activation_code       varchar(100)
 );
 
 alter table users
