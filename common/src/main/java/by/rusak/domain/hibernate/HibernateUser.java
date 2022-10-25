@@ -104,6 +104,10 @@ public class HibernateUser {
     @JsonIgnore
     private Long longitude;
 
+    @Column(name = "activation_code")
+    @JsonIgnore
+    private String activationCode;
+
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("users")

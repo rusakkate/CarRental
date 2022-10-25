@@ -3,13 +3,13 @@ package by.rusak.controller.springdata;
 import by.rusak.controller.requests.RoleRequest;
 import by.rusak.controller.requests.UserCreateRequest;
 import by.rusak.controller.requests.UserRegistrationRequest;
-import by.rusak.domain.Mail;
 import by.rusak.domain.hibernate.HibernateRole;
 import by.rusak.domain.hibernate.HibernateUser;
 import by.rusak.repository.springdata.RolesSpringDataRepository;
 import by.rusak.repository.springdata.UserSpringDataRepository;
 import by.rusak.security.util.PrincipalUtil;
-import by.rusak.service.MailService;
+import by.rusak.service.UserService;
+import by.rusak.service.UserServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -111,19 +111,6 @@ public class UserController {
 
         //HibernateRole convertTest = converter.convert(roleRequest, HibernateRole.class);
         //repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
-
-        Map<String, Object> model = new HashMap<>();
-        model.put("user", repository.findById(createdUser.getId()).get());
-
-        return new ResponseEntity<>(model, HttpStatus.CREATED);
-    }
-
-    @PostMapping ("/registration")
-    @Transactional
-    public ResponseEntity<Object> registration(@Valid @RequestBody UserRegistrationRequest registrationRequest) {
-
-        HibernateUser user = converter.convert(registrationRequest, HibernateUser.class);
-        HibernateUser createdUser = repository.save(setRoles(user));
 
         Map<String, Object> model = new HashMap<>();
         model.put("user", repository.findById(createdUser.getId()).get());

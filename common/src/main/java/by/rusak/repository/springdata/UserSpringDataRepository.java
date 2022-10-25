@@ -7,7 +7,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface UserSpringDataRepository extends CrudRepository<HibernateUser, Long>, JpaRepository<HibernateUser, Long>, PagingAndSortingRepository<HibernateUser, Long> {
+public interface UserSpringDataRepository extends CrudRepository<HibernateUser, Long>, JpaRepository<HibernateUser, Long>,
+        PagingAndSortingRepository<HibernateUser, Long> {
     HibernateUser findHibernateUserByUserName (String name);
 
    //List<HibernateUser> findByCredentialsLogin(String login);

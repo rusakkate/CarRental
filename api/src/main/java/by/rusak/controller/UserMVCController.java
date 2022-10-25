@@ -59,7 +59,7 @@ public class UserMVCController {
     public ModelAndView findUserById(@PathVariable String id) {
 
         //We have added id parsing and number format checking
-        long userId = Long.parseLong(id);
+       /* long userId = Long.parseLong(id);
         User user = userService.findById(userId);
 
         ModelAndView model = new ModelAndView();
@@ -68,7 +68,8 @@ public class UserMVCController {
 
         model.setViewName("user");
 
-        return model;
+        return model;*/
+        return null;
     }
 
     @PostMapping
