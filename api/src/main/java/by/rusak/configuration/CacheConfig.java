@@ -1,16 +1,13 @@
 package by.rusak.configuration;
 
-import com.github.benmanes.caffeine.cache.Caffeine;
-import org.springframework.cache.CacheManager;
-import org.springframework.cache.caffeine.CaffeineCacheManager;
-import org.springframework.context.annotation.Bean;
+//import com.github.benmanes.caffeine.cache.Caffeine;
+//import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class CacheConfig {
-    @Bean
+/*    @Bean
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("roles");
         cacheManager.setCaffeine(cacheProperties());
@@ -24,5 +21,6 @@ public class CacheConfig {
                 .expireAfterAccess(10, TimeUnit.SECONDS)
                 .weakKeys()
                 .recordStats();
-    }
+    }*/
 }
+

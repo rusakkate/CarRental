@@ -14,6 +14,10 @@ public class NoSuchEntityException extends RuntimeException {
         this.exceptionId = exceptionId;
     }
 
+    public NoSuchEntityException(String customMessage) {
+        this.customMessage = customMessage;
+    }
+
     public NoSuchEntityException(String message, String customMessage, Integer errorCode, String exceptionId) {
         super(message);
         this.customMessage = customMessage;

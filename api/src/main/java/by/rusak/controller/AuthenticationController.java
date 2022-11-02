@@ -1,9 +1,11 @@
 package by.rusak.controller;
 
-
 import by.rusak.controller.requests.AuthRequest;
 import by.rusak.controller.requests.AuthResponse;
 import by.rusak.security.jwt.JwtTokenHelper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +28,12 @@ public class AuthenticationController {
 
     private final UserDetailsService userProvider;
 
+    @ApiOperation(value = "Login user in system", notes = "Return Auth-Token with user login")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Successful authorization"),
+            @ApiResponse(code = 400, message = "Request error"),
+            @ApiResponse(code = 500, message = "Server error")
+    })
     @PostMapping
     public ResponseEntity<AuthResponse> loginUser(@RequestBody AuthRequest request) {
 

@@ -1,7 +1,9 @@
 package by.rusak.service;
 
-import by.rusak.domain.hibernate.HibernateUserRole;
-import by.rusak.repository.springdata.UserRoleSpringDataRepository;
+import by.rusak.domain.SystemRoles;
+import by.rusak.domain.User;
+import by.rusak.domain.UserRole;
+import by.rusak.repository.UserRoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +13,27 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserRoleServiceImpl implements UserRoleService{
 
-    private final UserRoleSpringDataRepository repository;
+    private final UserRoleRepository repository;
+
+    private final RoleService roleService;
 
     @Override
-    public HibernateUserRole save(HibernateUserRole hibernateUserRole) {
+    public UserRole save(UserRole userRole) {
 
-        return repository.save(hibernateUserRole);
+        return repository.save(userRole);
     }
 
     @Override
-    public Optional<HibernateUserRole> findById(Long userRoleId) {
+    public Optional<UserRole> findById(Long userRoleId) {
         return repository.findById(userRoleId);
+    }
+
+    @Override
+    public void setUserRoles(User user) {
+        UserRole userRole = new UserRole();
+        userRole.setIdUser(user.getId());
+        userRole.setIdRole(roleService.findRoleIdByRoleName(SystemRoles.ROLE_USER).getId());
+        save(userRole);
     }
 
 }

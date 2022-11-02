@@ -1,12 +1,15 @@
 package by.rusak.service;
 
-import by.rusak.domain.hibernate.HibernateUserRole;
+import by.rusak.domain.User;
+import by.rusak.domain.UserRole;
 
 import java.util.Optional;
 
 public interface UserRoleService {
 
-    HibernateUserRole save(HibernateUserRole hibernateUserRole);
+    UserRole save(UserRole hibernateUserRole);
 
-    Optional<HibernateUserRole> findById(Long userRoleId);
+    Optional<UserRole> findById(Long userRoleId);
+
+    void setUserRoles(User user);
 }

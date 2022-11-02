@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableCaching
 @EnableSwagger2
-//@EnableTransactionManagement
+@EnableTransactionManagement
 //@Import({PersistenceProvidersConfiguration.class})
 public class SpringBootStarter {
     public static void main(String[] args) {

@@ -16,7 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @RequiredArgsConstructor
@@ -27,16 +27,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userProvider;
 
-
     private final JwtTokenHelper tokenUtils;
 
-    private final NoOpPasswordEncoder noOpPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
                 .userDetailsService(userProvider)
-                .passwordEncoder(noOpPasswordEncoder);
+                .passwordEncoder(passwordEncoder);
     }
 
     @Bean
@@ -48,28 +47,32 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf()
-                .disable()
+                .csrf() // механизм защиты от csrf-угрозы
+                .disable()// механизм защиты от csrf-угрозы
                 .exceptionHandling()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
+                .authorizeRequests() // авторизовать запросы след. образом
                 /*For swagger access only*/
                 .antMatchers("/v2/api-docs/**", "/configuration/ui/**", "/swagger-resources/**", "/configuration/security/**", "/swagger-ui/**", "/webjars/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/swagger-ui/index").permitAll()
-                .antMatchers("/actuator/**").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers("/guest/**").permitAll()
-                .antMatchers("/registration/**").permitAll()
-                .antMatchers("/authentication/**").permitAll()
+                //.antMatchers("/actuator/**").permitAll()
+                //.antMatchers("/guest/**").permitAll()
+                //.antMatchers(" /activate/**").permitAll()
+                //.antMatchers("/rest/**").permitAll()
+                //.antMatchers("/authentication/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/rest/**").permitAll()
-                .antMatchers("/orders/**").permitAll()
+                .antMatchers("/registration/**").permitAll()
+                .antMatchers("/cars/**").permitAll()
+                .antMatchers("/schedule/**").permitAll()
+                .antMatchers("/users/**").hasAnyRole("USER", "ADMIN", "MODERATOR")
+                .antMatchers("/createord/**").hasAnyRole("USER", "ADMIN", "MODERATOR")
                 .antMatchers("/admin/**").hasAnyRole("ADMIN", "MODERATOR")
                 .anyRequest()
-                .authenticated();
+                .authenticated(); // каждый запрос д.б. аутентифицирован
 
         httpSecurity
                 .addFilterBefore(authenticationTokenFilterBean(authenticationManagerBean()), UsernamePasswordAuthenticationFilter.class);

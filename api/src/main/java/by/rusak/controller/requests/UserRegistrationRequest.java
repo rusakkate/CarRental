@@ -23,5 +23,4 @@ public class UserRegistrationRequest extends UserCreateRequest {
     @Size(min = 2, max = 200)
     private String userPassword;
 
-
 }

@@ -11,6 +11,10 @@ spring:
     ignore-migration-patterns: '*:ignored'
     #default-schema: carrental
     schemas: carrental
+
+
+
+
   datasource:
     hikari:
       jdbc-url: "jdbc:postgresql://localhost:5432/CarRental"
@@ -20,12 +24,12 @@ spring:
     password: postgres
     url: "jdbc:postgresql://localhost:5432/CarRental"
 
-#    cache:
-#      type: Caffeine
-#      cache-names: roles, brand, models, car_types
-#      caffeine:
-#        spec: initialCapacity=10,maximumSize=20, expireAfterAccess=10s
-
+  #    cache:
+  #      type: Caffeine
+  #      cache-names: roles, brand, models, car_types
+  #      caffeine:
+  #        spec: initialCapacity=10,maximumSize=20, expireAfterAccess=10s
+  #
   jpa:
     properties:
       javax.persistence.validation.mode: none
@@ -41,8 +45,11 @@ spring:
         cache:
           use_query_cache: true
 
+
 server:
   port: 8080
+  servlet:
+    context-path: /loop-service
 
 ---
 
