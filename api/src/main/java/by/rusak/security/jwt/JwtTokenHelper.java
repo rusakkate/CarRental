@@ -1,5 +1,6 @@
 package by.rusak.security.jwt;
 
+
 import by.rusak.configuration.JwtSecurityConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -22,6 +23,7 @@ import static java.util.Calendar.MILLISECOND;
 
 @Component
 @RequiredArgsConstructor
+
 public class JwtTokenHelper {
 
     /*Generate JWT Token and fields in token. Also add signature into 3-d part of token*/
@@ -137,4 +139,3 @@ public class JwtTokenHelper {
     }
 
 }
-

@@ -1,7 +1,7 @@
 package by.rusak.controller.converters;
 
 import by.rusak.controller.requests.UserCreateRequest;
-import by.rusak.domain.hibernate.HibernateUser;
+import by.rusak.domain.User;
 import org.springframework.core.convert.converter.Converter;
 
 import java.sql.Timestamp;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
 
-    public HibernateUser doConvert(HibernateUser userForUpdate, UserCreateRequest request) {
+    public User doConvert(User userForUpdate, UserCreateRequest request) {
 
         userForUpdate.setSurname(request.getSurname());
         userForUpdate.setUserName(request.getUserName());

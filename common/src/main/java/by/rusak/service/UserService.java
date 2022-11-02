@@ -1,23 +1,28 @@
 package by.rusak.service;
 
+//import by.rusak.domain.User;
 import by.rusak.domain.User;
-import by.rusak.domain.hibernate.HibernateUser;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public interface UserService {
 
     List<User> findAll();
 
-    Map<String, Object> getUserStats();
+    Optional <User> findByCredentialsLogin (String login);
 
-    User create(User object);
+    List<Object[]> findUserOrders (Long id);
 
-    Optional<HibernateUser> findById(Long userId);
+    User save(User user);
 
-    List<User> search(int limit, int offset);
+    Optional<User> findById(Long userId);
 
-    HibernateUser save(HibernateUser hibernateUser);
+    boolean checkForExistsLogin (User user);
+
+    boolean checkForExistsEmail (User user);
+
+    List<Object[]> findByHQLQueryNativeUserOrdersByLogin(@Param("user_login") String login);
+
 }

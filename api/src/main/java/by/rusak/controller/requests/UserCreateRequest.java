@@ -37,7 +37,7 @@ public class UserCreateRequest {
     @Past
     private Timestamp driverLicenseDate;
 
-    @ApiModelProperty(required = true, allowableValues = "myemail@mail.ru", dataType = "string", notes = "user's email")
+    @ApiModelProperty(required = true, allowableValues = "melitrica_red@mail.ru", dataType = "string", notes = "user's email")
     @Email
     private String email;
 

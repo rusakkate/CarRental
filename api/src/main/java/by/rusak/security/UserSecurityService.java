@@ -1,10 +1,10 @@
 package by.rusak.security;
 
-
 import by.rusak.domain.Role;
+import by.rusak.domain.SystemRoles;
 import by.rusak.domain.User;
-import by.rusak.repository.jdbctemplate.RoleRepositoryInterface;
-import by.rusak.repository.user.UserRepositoryInterface;
+import by.rusak.repository.RoleRepository;
+import by.rusak.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -19,15 +19,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserSecurityService implements UserDetailsService {
 
-    private final UserRepositoryInterface userRepository;
+    private final UserRepository userRepository;
 
-    private final RoleRepositoryInterface roleRepository;
+    private final RoleRepository roleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             /*Find user in DB*/
-            Optional<User> searchResult = userRepository.findByLogin(username);
+            Optional<User> searchResult = userRepository.findByCredentialsLogin(username);
 
             if (searchResult.isPresent()) {
                 User user = searchResult.get();
@@ -35,14 +35,14 @@ public class UserSecurityService implements UserDetailsService {
                 /*We are creating Spring Security User object*/
 
                 return new org.springframework.security.core.userdetails.User(
-                        user.getLogin(),
-                        user.getPassword(),
+                        user.getCredentials().getLogin(),
+                        user.getCredentials().getPassword(),
 //                        ["ROLE_USER", "ROLE_ADMIN"]
                         AuthorityUtils.commaSeparatedStringToAuthorityList(
-                                roleRepository.findRolesByUserId(user.getId())
+                                roleRepository.findRolesByUserid(user.getId())
                                         .stream()
                                         .map(Role::getRoleName)
-                                        //.map(SystemRoles::name)
+                                        .map(SystemRoles::name)
                                         .collect(Collectors.joining(","))
                         )
                 );
