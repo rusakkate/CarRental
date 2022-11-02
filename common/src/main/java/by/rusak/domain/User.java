@@ -41,7 +41,6 @@ import java.util.Set;
 })
 @Table(name = "users")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-//@NamedQuery(name = "m_users_multiple_ids_search", query = "select u from User u where u.id = :userIds")
 @Cacheable
 public class User {
 
