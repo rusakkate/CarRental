@@ -2,6 +2,8 @@ package by.rusak.exceptionhandle;
 
 import by.rusak.exception.NoSuchEntityException;
 import by.rusak.util.UUIDGenerator;
+import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolationException;
 import java.util.Collections;
 import java.util.List;
@@ -19,14 +22,15 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class DefaultExceptionHandler {
 
-    @ExceptionHandler({NoSuchEntityException.class, EmptyResultDataAccessException.class})
+    @ExceptionHandler({NoSuchEntityException.class, EmptyResultDataAccessException.class,
+            EntityNotFoundException.class, IllegalStateException.class})
     public ResponseEntity<Object> handleEntityNotFountException(Exception e) {
 
         ErrorContainer error = ErrorContainer
                 .builder()
                 .exceptionId(UUIDGenerator.generateUUID())
                 .errorCode(2)
-                .errorMessage(e.getMessage())
+                .errorMessage("Such object does not exist")
                 .e(e.getClass().toString())
                 .build();
 

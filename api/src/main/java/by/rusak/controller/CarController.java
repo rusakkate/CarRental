@@ -31,14 +31,8 @@ public class CarController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Object> findCarById(@PathVariable Long id) {
-        Optional<Car> cars = service.findById(id);
-        Map<String, Object> model = new HashMap<>();
-        if (cars.isEmpty()) {
-            model.put("message", "Car with id " + id + " does not exist");
-        } else {
-            model.put("message", cars);
-        }
-        return new ResponseEntity<>(model, HttpStatus.OK);
+        Car car = service.findById(id);
+        return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
     @GetMapping(value = "/productyear/{productyear}")

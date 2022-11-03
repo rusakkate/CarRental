@@ -1,6 +1,5 @@
 package by.rusak;
 
-import by.rusak.configuration.PersistenceProvidersConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;

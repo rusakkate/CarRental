@@ -1,6 +1,7 @@
 package by.rusak.controller;
 
 
+import by.rusak.domain.Car;
 import by.rusak.domain.Order;
 import by.rusak.service.OrderService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -42,8 +44,8 @@ public class AdminOrderController {
     })
     @GetMapping(value = "/{id}")
     public ResponseEntity<Object> findOrdById(@PathVariable Long id) {
-        Optional<Order> ord = service.findOrderById(id);
-        Map<String, Optional<Order>> result = Collections.singletonMap("result", ord);
+        Order ord = service.findOrderById(id);
+        Map<String, Order> result = Collections.singletonMap("result", ord);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -54,8 +56,13 @@ public class AdminOrderController {
     @GetMapping(value = "/ord/{brand}")
     public ResponseEntity<Object> findOrdByBrand(@PathVariable String brand) {
         List<Object[]> ords = service.findByBrand(brand);
-        Map<String, List<Object[]>> result = Collections.singletonMap("result", ords);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        Map<String, Object> model = new HashMap<>();
+        if (ords.isEmpty()) {
+            model.put("message", "Orders with brand " + brand + " does not exist");
+        } else {
+            model.put("message", ords);
+        }
+        return new ResponseEntity<>(model, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Finding user's orders by user id")

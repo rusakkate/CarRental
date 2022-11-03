@@ -15,10 +15,6 @@ import java.sql.Timestamp;
 @ApiModel(description = "Create order")
 public class OrderCreateRequest {
 
-    @ApiModelProperty(required = true, dataType = "long", notes = "user's id")
-    @NotNull
-    private Long idUser;
-
     @ApiModelProperty(required = true, dataType = "long", notes = "car's id")
     @NotNull
     private Long idCar;

@@ -11,8 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CarRepository extends JpaRepository<Car, Long>,
-        CrudRepository<Car, Long>, PagingAndSortingRepository<Car, Long> {
+public interface CarRepository extends JpaRepository<Car, Long> {
 
     List <Car> findCarsByBrand(String brand);
 

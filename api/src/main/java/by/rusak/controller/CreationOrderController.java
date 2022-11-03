@@ -2,6 +2,7 @@ package by.rusak.controller;
 
 import by.rusak.controller.requests.OrderCreateRequest;
 import by.rusak.domain.Order;
+import by.rusak.service.CarService;
 import by.rusak.service.OrderService;
 import by.rusak.service.ScheduleService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -34,10 +35,11 @@ public class CreationOrderController {
 
     private final OrderService orderService;
 
+    private final CarService carService;
+
     @ApiOperation(value = "Create order")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
-            @ApiImplicitParam(name = "query", defaultValue = "query", required = false, paramType = "query", dataType = "string")
+            @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string")
     })
     @PostMapping
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED,
@@ -58,7 +60,7 @@ public class CreationOrderController {
             Order createdOrder = orderService.save(order);
             setIsFreeFalse(order);
             model.put("message", "Order created");
-            model.put("order", orderService.findOrderById(createdOrder.getId()).get());
+            model.put("order", orderService.findOrderById(createdOrder.getId()));
         }
 
         return new ResponseEntity<>(model, HttpStatus.CREATED);
@@ -70,7 +72,7 @@ public class CreationOrderController {
     }
 
     private boolean checkFreePeriod(Order order) {
-        return scheduleService.checkFreePeriod(order.getIdCar(),
+        return scheduleService.checkFreePeriod(carService.findById(order.getIdCar()).getId(),
                 order.getRentalStartDate(), order.getRentalEndDate());
     }
 }
