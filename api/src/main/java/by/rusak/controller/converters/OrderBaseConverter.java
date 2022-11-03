@@ -12,7 +12,6 @@ import java.util.Date;
 public abstract class OrderBaseConverter <S, T> implements Converter<S, T>  {
     public Order doConvert(Order orderForUpdate, OrderCreateRequest request) {
 
-        orderForUpdate.setIdUser(request.getIdUser());
         orderForUpdate.setIdCar(request.getIdCar());
         orderForUpdate.setRentalStartDate(request.getRentalStartDate());
         orderForUpdate.setRentalEndDate(request.getRentalEndDate());

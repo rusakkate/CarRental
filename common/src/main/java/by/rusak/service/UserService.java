@@ -13,15 +13,17 @@ public interface UserService {
 
     Optional <User> findByCredentialsLogin (String login);
 
+    Optional <User> findByEmail(String email);
+
     List<Object[]> findUserOrders (Long id);
 
     User save(User user);
 
-    Optional<User> findById(Long userId);
+    User findById(Long userId);
 
-    boolean checkForExistsLogin (User user);
+/*    boolean checkForExistsLogin (User user);
 
-    boolean checkForExistsEmail (User user);
+    boolean checkForExistsEmail (User user);*/
 
     List<Object[]> findByHQLQueryNativeUserOrdersByLogin(@Param("user_login") String login);
 

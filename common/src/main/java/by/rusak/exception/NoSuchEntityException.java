@@ -39,7 +39,9 @@ public class NoSuchEntityException extends RuntimeException {
         this.exceptionId = exceptionId;
     }
 
-    public NoSuchEntityException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String customMessage, Integer errorCode, String exceptionId) {
+    public NoSuchEntityException(String message, Throwable cause, boolean enableSuppression,
+                                 boolean writableStackTrace, String customMessage,
+                                 Integer errorCode, String exceptionId) {
         super(message, cause, enableSuppression, writableStackTrace);
         this.customMessage = customMessage;
         this.errorCode = errorCode;

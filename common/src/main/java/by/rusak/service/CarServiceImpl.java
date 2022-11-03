@@ -1,10 +1,13 @@
 package by.rusak.service;
 
 import by.rusak.domain.Car;
+import by.rusak.exception.NoSuchEntityException;
 import by.rusak.repository.CarRepository;
+import by.rusak.util.UUIDGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +23,18 @@ public class CarServiceImpl implements CarService{
     }
 
     @Override
-    public Optional<Car> findById(Long carId) {
-        return repository.findById(carId);
+    public Car findById(Long carId) {
+        return repository.findById(carId).orElseThrow(() ->
+                new NoSuchEntityException("Car does not exist", 404, UUIDGenerator.generateUUID()));
     }
 
     @Override
     public List<Car> findCarsByBrand(String brand) {
-        return repository.findCarsByBrand(brand);
+        try {
+            return repository.findCarsByBrand(brand);
+        } catch (EntityNotFoundException e) {
+            throw new NoSuchEntityException("Brand does not exist", 404, UUIDGenerator.generateUUID());
+        }
     }
 
     @Override

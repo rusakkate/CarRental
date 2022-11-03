@@ -10,7 +10,7 @@ public interface OrderService {
 
     List<Order> findAll();
 
-    Optional<Order> findOrderById(Long id);
+    Order findOrderById(Long id);
 
     List<Object[]>findByBrand(String brand);
 

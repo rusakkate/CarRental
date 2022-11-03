@@ -9,7 +9,7 @@ public interface CarService {
 
     List<Car> findAll();
 
-    Optional<Car> findById(Long carId);
+    Car findById(Long carId);
 
     List<Car> findCarsByBrand(String brand);
 

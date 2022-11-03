@@ -21,8 +21,8 @@ public class UserChangeConverter extends UserBaseConverter<UserChangeRequest, Us
     public User convert(UserChangeRequest source) {
 
         try {
-            Optional<User> user = userService.findById(source.getId());
-            return doConvert(user.get(), source);
+           User user = userService.findById(source.getId());
+            return doConvert(user, source);
         } catch (EntityNotFoundException e){
             throw new NoSuchEntityException("User does not exist", 404, UUIDGenerator.generateUUID());
         }

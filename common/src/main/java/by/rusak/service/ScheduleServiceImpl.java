@@ -13,10 +13,16 @@ import java.util.List;
 public class ScheduleServiceImpl implements ScheduleService {
     private final ScheduleRepository repository;
 
+    private final CarService carService;
 
     @Override
     public List<Schedule> findFreeSchedulesByIdCar(Long idCar, Timestamp rentalStartDay) {
-        return repository.findSchedulesByIdCarAndIsFreeTrueAndUseDayAfter(idCar, rentalStartDay);
+        return repository
+                .findSchedulesByIdCarAndIsFreeTrueAndUseDayAfter
+                        (carService.findById(idCar)
+                                        .getId(),
+                                rentalStartDay
+                        );
     }
 
     @Override
@@ -26,12 +32,24 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public int changeIsFreeToBusy(Long idCar, Timestamp rentalStartDate, Timestamp rentalEndDate) {
-        return repository.findByHQLQueryNativeMakeBusyDate(idCar, rentalStartDate, rentalEndDate);
+        return repository
+                .findByHQLQueryNativeMakeBusyDate
+                        (carService.findById(idCar)
+                                        .getId(),
+                                rentalStartDate,
+                                rentalEndDate
+                        );
     }
 
     @Override
     public boolean checkFreePeriod(Long idCar, Timestamp rentalStartDate, Timestamp rentalEndDate) {
-        return repository.findByHQLQueryNativeCheckFreePeriod(idCar, rentalStartDate, rentalEndDate);
+        return repository
+                .findByHQLQueryNativeCheckFreePeriod
+                        (carService.findById(idCar)
+                                        .getId(),
+                                rentalStartDate,
+                                rentalEndDate
+                        );
     }
 
     @Override

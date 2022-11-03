@@ -26,9 +26,6 @@ import java.util.Optional;
 @RequestMapping("/admin/users")
 public class AdminUserController {
     private final UserService service;
-    private final RoleRepository rolesSpringDataRepository;
-    private final ConversionService converter;
-    private final UserRepository repository;
 
     @ApiOperation(value = "Finding all users")
     @ApiImplicitParams({
@@ -47,8 +44,8 @@ public class AdminUserController {
     })
     @GetMapping(value = "/user/{id}")
     public ResponseEntity<Object> findUserById(@PathVariable Long id) {
-        Optional<User> user = service.findById(id);
-        Map<String, Optional<User>> result = Collections.singletonMap("result", user);
+        User user = service.findById(id);
+        Map<String, User> result = Collections.singletonMap("result", user);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -68,7 +65,7 @@ public class AdminUserController {
             @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
     })
     @GetMapping(value = "/userOrder/{login}")
-    public ResponseEntity<Object> findUserOrderByName(@PathVariable String login) {
+    public ResponseEntity<Object> findUserOrderByLogin(@PathVariable String login) {
         List<Object[]> userOrders = service.findByHQLQueryNativeUserOrdersByLogin(login);
         Map<String, List<Object[]>> result = Collections.singletonMap("result", userOrders);
         return new ResponseEntity<>(result, HttpStatus.OK);

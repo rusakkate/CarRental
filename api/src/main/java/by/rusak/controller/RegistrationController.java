@@ -47,15 +47,17 @@ public class RegistrationController {
 
         Map<String, Object> model = new HashMap<>();
 
-        if (userService.checkForExistsLogin(user)) {
+        //if (userService.checkForExistsLogin(user)) {
+        if (userService.findByCredentialsLogin(user.getCredentials().getLogin()).isPresent()) {
             model.put("message", "User with such login exist");
-        } else if (userService.checkForExistsEmail(user)){
+        //} else if (userService.checkForExistsEmail(user)){
+        } else if (userService.findByEmail(user.getEmail()).isPresent()){
             model.put("message", "User with such email exist");
-        }else {
+        } else {
             User createdUser = userService.save(user);
             setUserRoles(createdUser);
             model.put("message", "User created");
-            model.put("user", userService.findById(createdUser.getId()).get());
+            model.put("user", userService.findById(createdUser.getId()));
         }
 
         return new ResponseEntity<>(model, HttpStatus.CREATED);
