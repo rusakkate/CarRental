@@ -17,8 +17,6 @@ public interface UserRepository extends CrudRepository<User, Long>, JpaRepositor
 
     Optional<User> findByEmail(String email);
 
-
-
     @Query(value = "select carrental.orders.rental_start_date, carrental.orders.rental_end_date, carrental.orders.order_price, " +
             "carrental.cars.brand, carrental.cars.model " +
             "from carrental.users " +

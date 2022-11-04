@@ -1,27 +1,21 @@
 package by.rusak.repository;
 
 import by.rusak.domain.Car;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface CarRepository extends JpaRepository<Car, Long> {
+public interface CarRepository extends JpaRepository<Car, Long>, PagingAndSortingRepository<Car, Long> {
 
-    List <Car> findCarsByBrand(String brand);
+    Page <Car> findCarsByBrand(String brand, Pageable pageable);
 
-    List<Object[]> findCarByProductionYear (Integer prodYear);
+    Page <Car> findCarsByBrandAndModel(String brand, String model, Pageable pageable);
 
-    List <Object[]> findCarsByPriceDayBefore(Double priceDay);
+    Page <Car> findCarByProductionYear (Integer prodYear, Pageable pageable);
 
-    @Query(value = "select * from carrental.cars " +
-            "where carrental.cars.brand = :brand", nativeQuery = true)
-    List<Car> findByHQLQueryNativeCarByBrand(@Param("brand") String brand);
-
+    Page <Car> findCarsByPriceDayBefore(Double priceDay, Pageable pageable);
 
 }

@@ -25,7 +25,6 @@ public class UserRegistrationConverter extends UserBaseConverter<UserRegistratio
         Credentials credentials = new Credentials(
                 source.getUserLogin(),
                 passwordEncoder.encode(source.getUserPassword())
-                //source.getUserPassword()
         );
 
         user.setCredentials(credentials);

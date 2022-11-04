@@ -3,6 +3,8 @@ package by.rusak.service;
 import by.rusak.domain.Schedule;
 import by.rusak.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -14,20 +16,15 @@ public class ScheduleServiceImpl implements ScheduleService {
     private final ScheduleRepository repository;
 
     private final CarService carService;
-
     @Override
-    public List<Schedule> findFreeSchedulesByIdCar(Long idCar, Timestamp rentalStartDay) {
-        return repository
-                .findSchedulesByIdCarAndIsFreeTrueAndUseDayAfter
-                        (carService.findById(idCar)
-                                        .getId(),
-                                rentalStartDay
-                        );
+    public Page<Schedule> findFreeSchedulesByIdCar(Long idCar, Timestamp rentalStartDay, Pageable pageable) {
+        return repository.findSchedulesByIdCarAndIsFreeTrueAndUseDayAfter
+                (carService.findById(idCar).getId(), rentalStartDay, pageable);
     }
 
     @Override
-    public List<Schedule> findSchedulesByUseDayBetweenAndIsFreeIsTrue(Timestamp rentalStartDay, Timestamp rentalEndDate) {
-        return repository.findSchedulesByUseDayBetweenAndIsFreeIsTrue(rentalStartDay, rentalEndDate);
+    public Page<Schedule> findFreeSchedulesByPeriod(Timestamp rentalStartDay, Timestamp rentalEndDate, Pageable pageable) {
+        return repository.findSchedulesByUseDayBetweenAndIsFreeIsTrue(rentalStartDay, rentalEndDate, pageable);
     }
 
     @Override

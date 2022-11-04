@@ -8,9 +8,12 @@ import by.rusak.repository.UserRepository;
 import by.rusak.util.UUIDGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +22,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<User> findAll() {
@@ -50,27 +55,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User update(User userForUpdate) {
+//        userForUpdate.getCredentials()
+//                .setPassword(passwordEncoder.encode(userForUpdate.getCredentials().getPassword()));
+        repository.save(userForUpdate);
+        return repository.findById(userForUpdate.getId()).orElseThrow(() ->
+                new NoSuchEntityException("User does not exist", 404, UUIDGenerator.generateUUID()));
+    }
+
+    @Override
     public User findById(Long userId) {
         return repository.findById(userId).orElseThrow(() ->
                 new NoSuchEntityException("User does not exist", 404, UUIDGenerator.generateUUID()));
     }
-
-//    @Override
-//    public boolean checkForExistsLogin(User user) {
-//        if (repository.findByCredentialsLogin(user.getCredentials().getLogin()).isPresent()) {
-//            return true;
-//        }
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean checkForExistsEmail(User user) {
-//        if (repository.findByEmail(user.getEmail())!=null) {
-//            return true;
-//        }
-//        return false;
-//    }
-
 
     @Override
     public List<Object[]> findByHQLQueryNativeUserOrdersByLogin(@Param("user_login") String login){

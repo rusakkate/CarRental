@@ -19,11 +19,9 @@ public interface UserService {
 
     User save(User user);
 
+    User update (User userForUpdate);
+
     User findById(Long userId);
-
-/*    boolean checkForExistsLogin (User user);
-
-    boolean checkForExistsEmail (User user);*/
 
     List<Object[]> findByHQLQueryNativeUserOrdersByLogin(@Param("user_login") String login);
 

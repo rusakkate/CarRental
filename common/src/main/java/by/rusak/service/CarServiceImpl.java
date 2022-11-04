@@ -5,6 +5,8 @@ import by.rusak.exception.NoSuchEntityException;
 import by.rusak.repository.CarRepository;
 import by.rusak.util.UUIDGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -18,8 +20,8 @@ public class CarServiceImpl implements CarService{
     private final CarRepository repository;
 
     @Override
-    public List<Car> findAll() {
-        return repository.findAll();
+    public Page<Car> findAll(Pageable page) {
+        return repository.findAll(page);
     }
 
     @Override
@@ -29,21 +31,24 @@ public class CarServiceImpl implements CarService{
     }
 
     @Override
-    public List<Car> findCarsByBrand(String brand) {
-        try {
-            return repository.findCarsByBrand(brand);
-        } catch (EntityNotFoundException e) {
-            throw new NoSuchEntityException("Brand does not exist", 404, UUIDGenerator.generateUUID());
-        }
+    public Page <Car> findCarsByBrand(String brand, Pageable pageable) {
+        return repository.findCarsByBrand(brand, pageable);
     }
 
     @Override
-    public List<Object[]> findCarByProductionYear(Integer productYear) {
-        return repository.findCarByProductionYear(productYear);
+    public Page <Car> findCarsByBrandAndModel(String brand, String model, Pageable pageable) {
+        return repository.findCarsByBrandAndModel(brand, model, pageable);
     }
 
     @Override
-    public List<Object[]> findCarsByPriceDayBefore(Double priceDay) {
-        return repository.findCarsByPriceDayBefore(priceDay);
+    public   Page <Car> findCarByProductionYear (Integer prodYear, Pageable pageable) {
+        return repository.findCarByProductionYear(prodYear, pageable);
     }
+
+    @Override
+    public Page <Car> findCarsByPriceDayBefore(Double priceDay, Pageable pageable) {
+        return repository.findCarsByPriceDayBefore(priceDay, pageable);
+    }
+
+
 }

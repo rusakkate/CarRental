@@ -32,8 +32,6 @@ public class RegistrationController {
 
     private final UserService userService;
 
-    private final UserRepository repository;
-
     private final RoleService roleService;
 
     private final UserRoleService userRoleService;
@@ -47,10 +45,8 @@ public class RegistrationController {
 
         Map<String, Object> model = new HashMap<>();
 
-        //if (userService.checkForExistsLogin(user)) {
         if (userService.findByCredentialsLogin(user.getCredentials().getLogin()).isPresent()) {
             model.put("message", "User with such login exist");
-        //} else if (userService.checkForExistsEmail(user)){
         } else if (userService.findByEmail(user.getEmail()).isPresent()){
             model.put("message", "User with such email exist");
         } else {
