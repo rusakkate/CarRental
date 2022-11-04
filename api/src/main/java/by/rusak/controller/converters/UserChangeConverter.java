@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityNotFoundException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Optional;
 
 @Component
@@ -22,9 +24,10 @@ public class UserChangeConverter extends UserBaseConverter<UserChangeRequest, Us
 
         try {
            User user = userService.findById(source.getId());
-            return doConvert(user, source);
+           user.setModificationDate(new Timestamp(new Date().getTime()));
+           return doConvert(user, source);
         } catch (EntityNotFoundException e){
-            throw new NoSuchEntityException("User does not exist", 404, UUIDGenerator.generateUUID());
+           throw new NoSuchEntityException("User does not exist", 404, UUIDGenerator.generateUUID());
         }
 
     }

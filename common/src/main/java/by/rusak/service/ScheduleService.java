@@ -1,15 +1,17 @@
 package by.rusak.service;
 
 import by.rusak.domain.Schedule;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 public interface ScheduleService {
 
-    List<Schedule> findFreeSchedulesByIdCar(Long idCar, Timestamp rentalStartDay);
+    Page<Schedule> findFreeSchedulesByIdCar(Long idCar, Timestamp rentalStartDay, Pageable pageable);
 
-    List<Schedule> findSchedulesByUseDayBetweenAndIsFreeIsTrue(Timestamp rentalStartDay, Timestamp rentalEndDate);
+    Page<Schedule> findFreeSchedulesByPeriod(Timestamp rentalStartDay, Timestamp rentalEndDate, Pageable pageable);
 
     int changeIsFreeToBusy (Long idCar, Timestamp rentalStartDate, Timestamp rentalEndDate);
 

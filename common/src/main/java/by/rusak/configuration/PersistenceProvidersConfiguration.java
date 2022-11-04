@@ -62,14 +62,6 @@ public class PersistenceProvidersConfiguration {
         properties.put("hibernate.connection.CharSet", "utf8mb4");
         properties.put("hibernate.connection.useUnicode", "true");
 
-        //Second level cache turn-on
-        properties.put("hibernate.cache.use_second_level_cache", "true");
-        properties.put("hibernate.javax.cache.provider", "net.sf.ehcache.hibernate.EhCacheProvider");
-        properties.put("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
-        properties.put("hibernate.cache.ehcache.missing_cache_strategy", "create");
-
-        /*Third level cache turn-on*/
-       properties.put("hibernate.cache.use_query_cache", "true");
         return properties;
     }
 }

@@ -3,6 +3,7 @@ package by.rusak.controller.converters;
 import by.rusak.controller.requests.OrderCreateRequest;
 import by.rusak.domain.Order;
 import by.rusak.security.AuthUserInformation;
+import by.rusak.security.util.PrincipalUtil;
 import by.rusak.service.OrderService;
 import by.rusak.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,6 @@ import java.util.Date;
 public class OrderCreateConverter extends OrderBaseConverter <OrderCreateRequest, Order> {
 
     private final OrderService service;
-    private final AuthUserInformation authUserInformation;
 
     @Override
     public Order convert(OrderCreateRequest source) {
@@ -30,8 +30,6 @@ public class OrderCreateConverter extends OrderBaseConverter <OrderCreateRequest
         order.setOrderPrice(service.calculateOrderAmount(source.getRentalEndDate(),
                 source.getRentalStartDate(), source.getIdCar()));
         order.setCreationDate(new Timestamp(new Date().getTime()));
-
-        order.setIdUser(authUserInformation.getAuthUserId());
 
         return doConvert(order, source);
 

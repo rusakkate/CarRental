@@ -1,19 +1,22 @@
 package by.rusak.service;
 
 import by.rusak.domain.Car;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CarService {
-
-    List<Car> findAll();
+    Page<Car> findAll(Pageable page);
 
     Car findById(Long carId);
 
-    List<Car> findCarsByBrand(String brand);
+    Page <Car> findCarsByBrand(String brand, Pageable pageable);
 
-    List<Object[]> findCarByProductionYear(Integer productYear);
+    Page <Car> findCarsByBrandAndModel(String brand, String model, Pageable pageable);
 
-    List <Object[]> findCarsByPriceDayBefore(Double priceDay);
+    Page <Car> findCarByProductionYear (Integer prodYear, Pageable pageable);
+
+    Page <Car> findCarsByPriceDayBefore(Double priceDay, Pageable pageable);
 }

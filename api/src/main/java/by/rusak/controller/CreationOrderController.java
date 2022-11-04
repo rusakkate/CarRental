@@ -2,9 +2,11 @@ package by.rusak.controller;
 
 import by.rusak.controller.requests.OrderCreateRequest;
 import by.rusak.domain.Order;
+import by.rusak.security.util.PrincipalUtil;
 import by.rusak.service.CarService;
 import by.rusak.service.OrderService;
 import by.rusak.service.ScheduleService;
+import by.rusak.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +41,8 @@ public class CreationOrderController {
 
     private final CarService carService;
 
+    private final UserService userService;
+
     @ApiOperation(value = "Create order")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string")
@@ -44,7 +50,7 @@ public class CreationOrderController {
     @PostMapping
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED,
             timeout = 300, rollbackFor = Exception.class)
-    public ResponseEntity<Object> createorder(@Valid @RequestBody OrderCreateRequest request) {
+    public ResponseEntity<Object> createorder(@Valid @RequestBody OrderCreateRequest request, @ApiIgnore Principal principal) {
 
         Order order = converter.convert(request, Order.class);
         Map<String, Object> model = new HashMap<>();
@@ -57,6 +63,9 @@ public class CreationOrderController {
         } else if (checkFreePeriod(order)) {
             model.put("message", "The car " + order.getIdCar() + " is busy on the selected dates, try again");
         } else {
+            String login = PrincipalUtil.getUsername(principal);
+            Long idUser = userService.findByCredentialsLogin(login).get().getId();
+            order.setIdUser(idUser);
             Order createdOrder = orderService.save(order);
             setIsFreeFalse(order);
             model.put("message", "Order created");

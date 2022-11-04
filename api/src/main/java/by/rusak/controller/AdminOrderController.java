@@ -3,18 +3,27 @@ package by.rusak.controller;
 
 import by.rusak.domain.Car;
 import by.rusak.domain.Order;
+import by.rusak.security.CustomHeaders;
+import by.rusak.security.util.PrincipalUtil;
 import by.rusak.service.OrderService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
+import java.security.Principal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;

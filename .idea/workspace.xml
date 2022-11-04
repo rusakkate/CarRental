@@ -4,30 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="aspect">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/security/AuthUserInformation.java" afterDir="false" />
+    <list default="true" id="48d702c7-3e9a-41e0-8b41-f914e410f802" name="Changes" comment="paging">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserChangeDriverLicenseRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/UserChangePasswordRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/SpringBootStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/SpringBootStarter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/AdminOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/AdminOrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/AdminUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/AdminUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/CarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/CreationOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/CreationOrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/ScheduleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/OrderBaseConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/OrderBaseConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/OrderCreateConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/OrderCreateConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/UserChangeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/UserChangeConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/OrderCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/requests/OrderCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/DefaultExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/security/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/security/WebSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/exception/NoSuchEntityException.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/exception/NoSuchEntityException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/UserRegistrationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/by/rusak/controller/converters/UserRegistrationConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/configuration/PersistenceProvidersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/configuration/PersistenceProvidersConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/CarRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/CarRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/ScheduleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/CarService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/CarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/ScheduleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/ScheduleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/ScheduleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserServiceImpl.java" afterDir="false" />
@@ -95,7 +93,7 @@
     "ShowUsagesActions.previewPropertyKey": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/A S U S/IdeaProjects/rent_platform-master",
+    "last_opened_file_path": "C:/Users/A S U S/IdeaProjects/DemoCarRental",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -263,7 +261,9 @@
       <workItem from="1667402959633" duration="12402000" />
       <workItem from="1667450793616" duration="1342000" />
       <workItem from="1667452342851" duration="3393000" />
-      <workItem from="1667476643045" duration="6454000" />
+      <workItem from="1667476643045" duration="13420000" />
+      <workItem from="1667536625738" duration="174000" />
+      <workItem from="1667536848360" duration="31249000" />
     </task>
     <task id="LOCAL-00001" summary="Beans (client, car)">
       <created>1662568060872</created>
@@ -335,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667403081399</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="exception">
+      <created>1667483199555</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1667483199555</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,7 +406,9 @@
     <MESSAGE value="validation create user" />
     <MESSAGE value="record user role" />
     <MESSAGE value="aspect" />
-    <option name="LAST_COMMIT_MESSAGE" value="aspect" />
+    <MESSAGE value="exception" />
+    <MESSAGE value="paging" />
+    <option name="LAST_COMMIT_MESSAGE" value="paging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -415,34 +424,9 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/DefaultExceptionHandler.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/exceptionhandle/DefaultExceptionHandler.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserServiceImpl.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserServiceImpl.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/common/src/main/java/by/rusak/service/UserServiceImpl.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/AdminUserController.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="44" />
+          <line>60</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/api/src/main/java/by/rusak/controller/springdata/OrderController.java</url>
