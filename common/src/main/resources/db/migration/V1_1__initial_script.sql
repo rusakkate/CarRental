@@ -8,15 +8,14 @@ create table if not exists users
     birthday              timestamp(6)                                                             not null,
     driver_license_number varchar(20),
     driver_license_date   timestamp(6),
-    user_login            varchar(100),
-    user_password         varchar(200) default 'default_password'::character varying,
-    email                 varchar(50),
-    latitude              double precision,
-    longitude             double precision,
+    user_login            varchar(100)                                                             not null,
+    user_password         varchar(200)                                                             not null,
+    email                 varchar(50)                                                              not null,
     creation_date         timestamp(6) default CURRENT_TIMESTAMP                                   not null,
     modification_date     timestamp(6) default CURRENT_TIMESTAMP                                   not null,
     is_deleted            boolean      default false                                               not null,
-    activation_code       varchar(100)
+    activation_code       varchar(100),
+    is_enabled            boolean      default false                                               not null
 );
 
 alter table users
@@ -37,8 +36,6 @@ create table if not exists cars
     model             varchar(50)                                                        not null,
     plate_number      varchar(10)                                                        not null,
     production_year   integer                                                            not null,
-    rating            double precision,
-    photo             inet,
     price_day         double precision                                                   not null,
     creation_date     timestamp(6) default CURRENT_TIMESTAMP                             not null,
     modification_date timestamp(6),
@@ -71,7 +68,6 @@ create table if not exists orders
     rental_start_date timestamp(6)                           not null,
     rental_end_date   timestamp(6)                           not null,
     order_price       double precision                       not null,
-    route_distance    double precision,
     creation_date     timestamp(6) default CURRENT_TIMESTAMP not null,
     modification_date timestamp(6) default CURRENT_TIMESTAMP
 

@@ -36,6 +36,21 @@ spring:
         cache:
           use_query_cache: true
 
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: rusakkate100@gmail.com
+    password: vtratpxdirjncgmk
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
+
 server:
   port: 8080
   servlet:

@@ -2,9 +2,11 @@ package by.rusak.controller.requests;
 
 import lombok.Data;
 
+/*
 @Data
 public class RoleRequest {
 
     private String name;
 
 }
+*/

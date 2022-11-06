@@ -19,6 +19,7 @@
         <lombok.version.custom>1.18.22</lombok.version.custom>
         <apache.commons.version>3.12.0</apache.commons.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
+        <openpdf.version>1.3.26 </openpdf.version>
     </properties>
 
     <dependencies>
@@ -76,6 +77,17 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version.custom}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.librepdf</groupId>
+            <artifactId>openpdf</artifactId>
+            <version>${openpdf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
     </dependencies>

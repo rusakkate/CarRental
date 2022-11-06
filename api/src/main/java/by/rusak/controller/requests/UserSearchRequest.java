@@ -1,6 +1,7 @@
 package by.rusak.controller.requests;
 
 import lombok.Data;
+/*
 
 @Data
 public class UserSearchRequest {
@@ -11,4 +12,4 @@ public class UserSearchRequest {
 
     private String searchQuery;
 
-}
+}*/

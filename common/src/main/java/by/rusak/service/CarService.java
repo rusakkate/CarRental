@@ -14,6 +14,8 @@ public interface CarService {
 
     Page <Car> findCarsByBrand(String brand, Pageable pageable);
 
+    List <Car> findCarsByBrand(String brand);
+
     Page <Car> findCarsByBrandAndModel(String brand, String model, Pageable pageable);
 
     Page <Car> findCarByProductionYear (Integer prodYear, Pageable pageable);

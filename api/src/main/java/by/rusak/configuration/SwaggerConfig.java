@@ -12,25 +12,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 public class SwaggerConfig {
 
-    /*@Bean
-    public OpenAPI customOpenAPI() {
-        return new OpenAPI().info(apiInfo());
-    }
-
-    private Info apiInfo() {
-        return new Info()
-                .title("API")
-                .description("API")
-                .version("2.0")
-                .license(apiLicence());
-    }
-
-    private License apiLicence() {
-        return new License()
-                .name("MIT Licence")
-                .url("opensource.org/licenses/mit-license.php");
-    }*/
-
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -39,14 +20,5 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
-
-/*    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }*/
 
 }

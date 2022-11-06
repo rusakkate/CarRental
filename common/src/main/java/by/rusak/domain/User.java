@@ -58,7 +58,6 @@ public class User {
     @Column (name = "birthday")
     private Timestamp birth;
 
-    /*null, true, false*/
     @Column(name = "is_deleted")
     @JsonIgnore
     private Boolean isDeleted;
@@ -91,17 +90,13 @@ public class User {
     @JsonIgnore
     private String email;
 
-    @Column(name = "latitude")
-    @JsonIgnore
-    private Long latitude;
-
-    @Column(name = "longitude")
-    @JsonIgnore
-    private Long longitude;
-
     @Column(name = "activation_code")
     @JsonIgnore
     private String activationCode;
+
+    @Column(name = "is_enabled")
+    @JsonIgnore
+    private Boolean isEnabled;
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

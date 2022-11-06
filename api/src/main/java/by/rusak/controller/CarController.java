@@ -28,9 +28,9 @@ public class CarController {
     @ApiOperation(value = "Finding all cars with Page Info response")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
-                    value = "Results page you want to retrieve (0..N)"),
+                    value = "Results page you want to retrieve (0..N)", defaultValue="0"),
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
-                    value = "Number of records per page."),
+                    value = "Number of records per page.", defaultValue="10"),
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Sorting criteria in the format: property(,asc|desc). " +
                             "Default sort order is ascending. " +
@@ -52,9 +52,9 @@ public class CarController {
     @ApiOperation(value = "Finding all cars by brand with Page Info response")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
-                    value = "Results page you want to retrieve (0..N)"),
+                    value = "Results page you want to retrieve (0..N)", defaultValue="0"),
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
-                    value = "Number of records per page."),
+                    value = "Number of records per page.", defaultValue="10"),
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Sorting criteria in the format: property(,asc|desc). " +
                             "Default sort order is ascending. " +
@@ -63,21 +63,15 @@ public class CarController {
     @GetMapping(value = "/brand/{brand}")
     public ResponseEntity<Object> findCarsByBrand(@PathVariable String brand, @ApiIgnore Pageable pageable) {
         Page<Car> cars = service.findCarsByBrand(brand, pageable);
-        Map<String, Object> result = new HashMap<>();
-        if (cars.isEmpty()) {
-            result.put("message", "Car with brand " + brand + " does not exist");
-        } else {
-            result.put("message", cars);
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Finding all cars by brand and model with Page Info response")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
-                    value = "Results page you want to retrieve (0..N)"),
+                    value = "Results page you want to retrieve (0..N)", defaultValue="0"),
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
-                    value = "Number of records per page."),
+                    value = "Number of records per page.", defaultValue="10"),
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Sorting criteria in the format: property(,asc|desc). " +
                             "Default sort order is ascending. " +
@@ -86,21 +80,15 @@ public class CarController {
     @GetMapping(value = "/type/{brand}/{model}")
     public ResponseEntity<Object> findCarsByModel(@PathVariable String brand, @PathVariable String model, @ApiIgnore Pageable pageable) {
         Page<Car> cars = service.findCarsByBrandAndModel(brand, model, pageable);
-        Map<String, Object> result = new HashMap<>();
-        if (cars.isEmpty()) {
-            result.put("message", "Car with with brand " + brand + " and model " + model + " does not exist");
-        } else {
-            result.put("message", cars);
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Finding all cars by product year with Page Info response")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
-                    value = "Results page you want to retrieve (0..N)"),
+                    value = "Results page you want to retrieve (0..N)", defaultValue="0"),
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
-                    value = "Number of records per page."),
+                    value = "Number of records per page.", defaultValue="10"),
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Sorting criteria in the format: property(,asc|desc). " +
                             "Default sort order is ascending. " +
@@ -109,21 +97,15 @@ public class CarController {
     @GetMapping(value = "/productyear/{productyear}")
     public ResponseEntity<Object> findCarsByProdYear(@PathVariable Integer productyear, @ApiIgnore Pageable pageable) {
         Page<Car> cars = service.findCarByProductionYear(productyear, pageable);
-        Map<String, Object> result = new HashMap<>();
-        if (cars.isEmpty()) {
-            result.put("message", "Car with product year " + productyear + " does not exist");
-        } else {
-            result.put("message", cars);
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Finding all cars by day price before with Page Info response")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
-                    value = "Results page you want to retrieve (0..N)"),
+                    value = "Results page you want to retrieve (0..N)", defaultValue="0"),
             @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
-                    value = "Number of records per page."),
+                    value = "Number of records per page.", defaultValue="10"),
             @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
                     value = "Sorting criteria in the format: property(,asc|desc). " +
                             "Default sort order is ascending. " +
@@ -132,13 +114,6 @@ public class CarController {
     @GetMapping(value = "/pricebefore/{price}")
     public ResponseEntity<Object> findCarsByPriceBefore(@PathVariable Double price, @ApiIgnore Pageable pageable) {
         Page<Car> cars = service.findCarsByPriceDayBefore(price, pageable);
-        Map<String, Object> result = new HashMap<>();
-        if (cars.isEmpty()) {
-            result.put("message", "Car with price before " + price + " does not exist");
-        } else {
-            result.put("message", cars);
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(cars, HttpStatus.OK);
     }
-
 }
