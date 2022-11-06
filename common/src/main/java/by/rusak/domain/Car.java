@@ -43,12 +43,6 @@ public class Car {
     @Column(name = "production_year")
     private Integer productionYear;
 
-    @Column(name = "rating")
-    private Double rating;
-
-    @Column(name = "photo")
-    private String photo;
-
     @Column(name = "price_day")
     private Double priceDay;
 

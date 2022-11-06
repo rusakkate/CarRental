@@ -1,8 +1,7 @@
 package by.rusak.controller;
 
-import by.rusak.controller.requests.UserChangePasswordRequest;
 import by.rusak.controller.requests.UserChangeDriverLicenseRequest;
-import by.rusak.domain.Credentials;
+import by.rusak.controller.requests.UserChangePasswordRequest;
 import by.rusak.domain.User;
 import by.rusak.security.util.PrincipalUtil;
 import by.rusak.service.UserService;
@@ -10,7 +9,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,8 +47,7 @@ public class UserController {
     public ResponseEntity<Object> getUserInformation1 (@ApiIgnore Principal principal) {
         String login = PrincipalUtil.getUsername(principal);
         Optional<User> user = service.findByCredentialsLogin(login);
-        Map<String,  Optional<User>> result = Collections.singletonMap("result", user);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @ApiOperation(value = "User order history. Available after logging into account, link /auth")
@@ -60,9 +57,8 @@ public class UserController {
     @GetMapping(value = "/userOrders")
     public ResponseEntity<Object> getUserOrders (@ApiIgnore Principal principal) {
         String login = PrincipalUtil.getUsername(principal);
-        List<Object[]> userOrders = service.findByHQLQueryNativeUserOrdersByLogin(login);
-        Map<String, List<Object[]>> result = Collections.singletonMap("result", userOrders);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        List<Object[]> userOrders = service.findUserOrdersByLogin(login);
+        return new ResponseEntity<>(userOrders, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Change information about driver license. Available after logging into account, link /auth")

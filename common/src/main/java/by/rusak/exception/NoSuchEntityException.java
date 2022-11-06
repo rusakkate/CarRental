@@ -51,9 +51,6 @@ public class NoSuchEntityException extends RuntimeException {
     @Override
     public String toString() {
         return "NoSuchEntityException{" +
-                "customMessage='" + customMessage + '\'' +
-                ", errorCode=" + errorCode +
-                ", exceptionId='" + exceptionId + '\'' +
-                "} " + super.toString();
+                "customMessage='" + customMessage + "'}";
     }
 }

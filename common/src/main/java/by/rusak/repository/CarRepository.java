@@ -7,10 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long>, PagingAndSortingRepository<Car, Long> {
 
     Page <Car> findCarsByBrand(String brand, Pageable pageable);
+
+    List <Car> findCarsByBrand(String brand);
 
     Page <Car> findCarsByBrandAndModel(String brand, String model, Pageable pageable);
 

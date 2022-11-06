@@ -42,10 +42,6 @@ public class Order {
     @Column(name = "order_price")
     private Double orderPrice;
 
-    @Column(name = "route_distance")
-    @JsonIgnore
-    private Double routeDistance;
-
     @Column(name = "creation_date")
     @JsonIgnore
     private Timestamp creationDate;

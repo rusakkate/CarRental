@@ -3,6 +3,7 @@ package by.rusak.controller.requests;
 import lombok.Data;
 
 
+/*
 @Data
 public class UserRoleRequest {
 
@@ -10,3 +11,4 @@ public class UserRoleRequest {
 
     private Long idUser;
 }
+*/

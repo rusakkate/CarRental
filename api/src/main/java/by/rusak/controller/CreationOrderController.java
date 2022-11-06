@@ -39,8 +39,6 @@ public class CreationOrderController {
 
     private final OrderService orderService;
 
-    private final CarService carService;
-
     private final UserService userService;
 
     @ApiOperation(value = "Create order")
@@ -50,19 +48,14 @@ public class CreationOrderController {
     @PostMapping
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED,
             timeout = 300, rollbackFor = Exception.class)
-    public ResponseEntity<Object> createorder(@Valid @RequestBody OrderCreateRequest request, @ApiIgnore Principal principal) {
+    public ResponseEntity<Object> createOrder(@Valid @RequestBody OrderCreateRequest request, @ApiIgnore Principal principal) {
 
         Order order = converter.convert(request, Order.class);
         Map<String, Object> model = new HashMap<>();
-        Timestamp maxUseDay = scheduleService.findMaxUseDay();
 
-        if (order.getRentalStartDate().after(maxUseDay) || order.getRentalEndDate().after(maxUseDay)) {
-            model.put("message", "The schedule for the selected period is not yet available");
-        } else if (order.getRentalEndDate().before(order.getRentalStartDate())) {
-            model.put("message", "Rental end date can't be before rental start day, try again");
-        } else if (checkFreePeriod(order)) {
-            model.put("message", "The car " + order.getIdCar() + " is busy on the selected dates, try again");
-        } else {
+        HttpStatus httpStatus;
+
+        if (!checkFreePeriod(order)) {
             String login = PrincipalUtil.getUsername(principal);
             Long idUser = userService.findByCredentialsLogin(login).get().getId();
             order.setIdUser(idUser);
@@ -70,9 +63,12 @@ public class CreationOrderController {
             setIsFreeFalse(order);
             model.put("message", "Order created");
             model.put("order", orderService.findOrderById(createdOrder.getId()));
+            httpStatus = HttpStatus.CREATED;
+        } else {
+            model.put("message", "The car " + order.getIdCar() + " is busy on the selected dates, try again");
+            httpStatus = HttpStatus.NOT_FOUND;
         }
-
-        return new ResponseEntity<>(model, HttpStatus.CREATED);
+        return new ResponseEntity<>(model, httpStatus);
     }
 
     private int setIsFreeFalse(Order order) {
@@ -81,7 +77,7 @@ public class CreationOrderController {
     }
 
     private boolean checkFreePeriod(Order order) {
-        return scheduleService.checkFreePeriod(carService.findById(order.getIdCar()).getId(),
+        return scheduleService.checkFreePeriod(order.getIdCar(),
                 order.getRentalStartDate(), order.getRentalEndDate());
     }
 }

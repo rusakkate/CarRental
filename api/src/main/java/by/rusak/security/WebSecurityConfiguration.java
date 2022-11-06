@@ -47,33 +47,27 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf() // механизм защиты от csrf-угрозы
-                .disable()// механизм защиты от csrf-угрозы
+                .csrf()
+                .disable()
                 .exceptionHandling()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests() // авторизовать запросы след. образом
+                .authorizeRequests()
                 /*For swagger access only*/
                 .antMatchers("/v2/api-docs/**", "/configuration/ui/**", "/swagger-resources/**", "/configuration/security/**", "/swagger-ui/**", "/webjars/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/swagger-ui/index").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                //.antMatchers("/actuator/**").permitAll()
-                //.antMatchers("/guest/**").permitAll()
-                //.antMatchers(" /activate/**").permitAll()
-                //.antMatchers("/rest/**").permitAll()
-                //.antMatchers("/authentication/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/registration/**").permitAll()
                 .antMatchers("/cars/**").permitAll()
                 .antMatchers("/schedule/**").permitAll()
-                .antMatchers("/adm/**").permitAll()
                 .antMatchers("/users/**").hasAnyRole("USER", "ADMIN", "MODERATOR")
                 .antMatchers("/createord/**").hasAnyRole("USER", "ADMIN", "MODERATOR")
                 .antMatchers("/admin/**").hasAnyRole("ADMIN", "MODERATOR")
                 .anyRequest()
-                .authenticated(); // каждый запрос д.б. аутентифицирован
+                .authenticated();
 
         httpSecurity
                 .addFilterBefore(authenticationTokenFilterBean(authenticationManagerBean()), UsernamePasswordAuthenticationFilter.class);

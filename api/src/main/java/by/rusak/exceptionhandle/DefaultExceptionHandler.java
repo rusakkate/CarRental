@@ -30,7 +30,23 @@ public class DefaultExceptionHandler {
                 .builder()
                 .exceptionId(UUIDGenerator.generateUUID())
                 .errorCode(2)
-                .errorMessage("Such object does not exist")
+                //.errorMessage("Such object does not exist")
+                .errorMessage(e.toString())
+                .e(e.getClass().toString())
+                .build();
+
+        return new ResponseEntity<>(Collections.singletonMap("error", error), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Object> handleEntityIllegalArgumentException(Exception e) {
+
+        ErrorContainer error = ErrorContainer
+                .builder()
+                .exceptionId(UUIDGenerator.generateUUID())
+                .errorCode(3)
+                //.errorMessage("Such object does not exist")
+                .errorMessage(e.toString())
                 .e(e.getClass().toString())
                 .build();
 

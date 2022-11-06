@@ -21,6 +21,7 @@ public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
         /*System fields filling*/
         userForUpdate.setModificationDate(new Timestamp(new Date().getTime()));
         userForUpdate.setIsDeleted(false);
+        userForUpdate.setIsEnabled(false);
 
         return userForUpdate;
     }

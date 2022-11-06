@@ -7,7 +7,7 @@ create function calculate_order_amount(start_date_param timestamp without time z
     language sql
     as
 $$
-select (cast(date_part ('day', start_date_param - end_date_param) as int) + 1)
+select (cast(date_part ('day', end_date_param - start_date_param) as int) + 1)
            * carrental.cars.price_day
 from carrental.cars
 where carrental.cars.id_car = id_car_param;

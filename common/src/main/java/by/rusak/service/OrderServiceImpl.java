@@ -1,17 +1,18 @@
 package by.rusak.service;
 
 import by.rusak.domain.Order;
-import by.rusak.domain.User;
 import by.rusak.exception.NoSuchEntityException;
 import by.rusak.repository.OrderRepository;
 import by.rusak.util.UUIDGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +22,12 @@ public class OrderServiceImpl implements OrderService {
 
     private final CarService carService;
 
-    private final UserService userService;
+    private  final UserService userService;
+
+    @Override
+    public Page<Order> findAll(Pageable page) {
+        return repository.findAll(page);
+    }
 
     @Override
     public List<Order> findAll() {
@@ -31,43 +37,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order findOrderById(Long id) {
         return repository.findById(id).orElseThrow(() ->
-                new NoSuchEntityException("Order does not exist", 404, UUIDGenerator.generateUUID()));
-    }
-
-    @Override
-    public List<Object[]> findByBrand(String brand) {
-        try {
-            return repository.findByHQLQueryNativeByBrand(brand);
-        } catch (EntityNotFoundException e) {
-            throw new NoSuchEntityException("Brand does not exist", 404, UUIDGenerator.generateUUID());
-        }
-    }
-
-    @Override
-    public List<Object[]> findOrdersByModel(String model) {
-        try {
-            return repository.findByHQLQueryNativeOrdersByModel(model);
-        } catch (EntityNotFoundException e) {
-            throw new NoSuchEntityException("Brand does not exist", 404, UUIDGenerator.generateUUID());
-        }
-    }
-
-    @Override
-    public List<Order> findOrdersByIdUser(Long idUser) {
-        try {
-            return repository.findOrdersByIdUser(idUser);
-        } catch (EntityNotFoundException e) {
-            throw new NoSuchEntityException("User does not exist", 404, UUIDGenerator.generateUUID());
-        }
-    }
-
-    @Override
-    public List<Order> findOrdersByIdCar(Long idCar) {
-        try {
-            return repository.findOrdersByIdCar(idCar);
-        } catch (EntityNotFoundException e) {
-            throw new NoSuchEntityException("Car does not exist", 404, UUIDGenerator.generateUUID());
-        }
+                new NoSuchEntityException("Order with id " + id
+                        + " does not exist", 404, UUIDGenerator.generateUUID()));
     }
 
     @Override
@@ -76,11 +47,52 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Page<Order> findOrdersByIdUser(Long idUser, Pageable page) {
+        if (userService.findById(idUser).equals(Exception.class)) {
+            throw new NoSuchEntityException("User with id " + idUser
+                    + " does not exist", 404, UUIDGenerator.generateUUID());
+        } else if (repository.findOrdersByIdUser(idUser, page).isEmpty()) {
+            throw new NoSuchEntityException("User with id " + idUser
+                    + " hasn't orders", 404, UUIDGenerator.generateUUID());
+        } else {
+            return repository.findOrdersByIdUser(idUser, page);
+        }
+    }
+
+    @Override
+    public Page<Order> findOrdersByIdCar(Long idCar, Pageable page) {
+        if (carService.findById(idCar).equals(Exception.class)) {
+            throw new NoSuchEntityException("Car with id " + idCar
+                    + " does not exist", 404, UUIDGenerator.generateUUID());
+        } else if (repository.findOrdersByIdCar(idCar, page).isEmpty()) {
+            throw new NoSuchEntityException("Car with id " + idCar
+                    + " had not been ordered", 404, UUIDGenerator.generateUUID());
+        } else {
+            return repository.findOrdersByIdCar(idCar, page);
+        }
+    }
+
+    @Override
+    public List<Object[]> findByBrand(String brand) {
+        if(carService.findCarsByBrand(brand).isEmpty()) {
+            throw new NoSuchEntityException("Brand " + brand + " does not exist", 404, UUIDGenerator.generateUUID());
+        } else if (repository.findByHQLQueryNativeByBrand(brand).isEmpty()){
+            throw new NoSuchEntityException("Orders with brand " + brand
+                    + " does not exist", 404, UUIDGenerator.generateUUID());
+        } else {
+            return repository.findByHQLQueryNativeByBrand(brand);
+        }
+    }
+
+    @Override
     public Double calculateOrderAmount(Timestamp rentalStartDate, Timestamp rentalEndDate, Long idCar) {
-        try {
+        if (carService.findById(idCar).equals(Exception.class)) {
+            throw new NoSuchEntityException("Car with id " + idCar
+                    + " does not exist", 404, UUIDGenerator.generateUUID());
+        } else if (rentalStartDate.after(rentalEndDate)) {
+            throw new IllegalArgumentException("Rental end date can't be before rental start day");
+        } else {
             return repository.calculateOrderAmount(rentalStartDate, rentalEndDate, idCar);
-        } catch (EntityNotFoundException e) {
-            throw new NoSuchEntityException("Car does not exist", 404, UUIDGenerator.generateUUID());
         }
     }
 }
