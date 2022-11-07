@@ -74,8 +74,8 @@ public class UserController {
 
         Map<String, Object> model = new HashMap<>();
         model.put("message", "User information change");
-        model.put("new user driver license number", service.findById(updatedUser.get().getId()).getDriverLicenseNumber());
-        model.put("new user driver license date", service.findById(updatedUser.get().getId()).getDriverLicenseDate());
+        model.put("new user driver license number", updatedUser.get().getDriverLicenseNumber());
+        model.put("new user driver license date", updatedUser.get().getDriverLicenseDate());
         return new ResponseEntity<>(model, HttpStatus.OK);
     }
 

@@ -86,13 +86,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Double calculateOrderAmount(Timestamp rentalStartDate, Timestamp rentalEndDate, Long idCar) {
-        if (carService.findById(idCar).equals(Exception.class)) {
-            throw new NoSuchEntityException("Car with id " + idCar
-                    + " does not exist", 404, UUIDGenerator.generateUUID());
-        } else if (rentalStartDate.after(rentalEndDate)) {
-            throw new IllegalArgumentException("Rental end date can't be before rental start day");
-        } else {
-            return repository.calculateOrderAmount(rentalStartDate, rentalEndDate, idCar);
-        }
+        return repository.calculateOrderAmount(rentalStartDate, rentalEndDate, idCar);
     }
 }
