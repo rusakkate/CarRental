@@ -21,5 +21,7 @@ public interface ScheduleService {
 
     Timestamp findMaxUseDay ();
 
+    List<Schedule> findAll();
+
 
 }

@@ -5,10 +5,12 @@ import by.rusak.exception.NoSuchEntityException;
 import by.rusak.repository.ScheduleRepository;
 import by.rusak.util.UUIDGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Access;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     private final ScheduleRepository repository;
 
     private final CarService carService;
+
     @Override
     public Page<Schedule> findFreeSchedulesByIdCar(Long idCar, Timestamp rentalStartDay, Pageable pageable) {
 
@@ -95,6 +98,11 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public Timestamp findMaxUseDay() {
         return repository.findByHQLQueryNativeMaxUseDay();
+    }
+
+    @Override
+    public List<Schedule> findAll() {
+        return repository.findAll();
     }
 
 
